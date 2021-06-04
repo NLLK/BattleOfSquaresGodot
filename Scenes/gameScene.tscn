@@ -1,0 +1,5739 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Styles/mainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/Game/gameMain_script.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Menu/menu_script.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 1
+
+[node name="Node2D" type="Node2D"]
+light_mask = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0 ],
+"_edit_vertical_guides_": [ 320.0 ]
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+__meta__ = {
+"_editor_description_": "You can use it when game is over"
+}
+
+[node name="SquarePlayerOne" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backgroundRectangle" type="ColorRect" parent="background"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backgroundSquares" type="Control" parent="background"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 18.0
+margin_right = 376.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square2" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 70.0
+margin_right = 376.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square3" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 122.0
+margin_right = 376.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square4" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 174.0
+margin_right = 376.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square5" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 226.0
+margin_right = 376.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square6" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 278.0
+margin_right = 376.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square7" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 330.0
+margin_right = 376.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square8" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 382.0
+margin_right = 376.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square9" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 434.0
+margin_right = 376.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square10" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 486.0
+margin_right = 376.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square11" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 538.0
+margin_right = 376.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square12" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 590.0
+margin_right = 376.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square13" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 642.0
+margin_right = 376.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square14" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 694.0
+margin_right = 376.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square15" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 746.0
+margin_right = 376.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square16" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 798.0
+margin_right = 376.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square17" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 850.0
+margin_right = 376.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square18" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 902.0
+margin_right = 376.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square19" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 954.0
+margin_right = 376.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square20" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 320.12
+margin_top = 1006.0
+margin_right = 376.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square21" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 18.0
+margin_right = 428.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square22" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 70.0
+margin_right = 428.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square23" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 122.0
+margin_right = 428.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square24" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 174.0
+margin_right = 428.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square25" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 226.0
+margin_right = 428.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square26" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 278.0
+margin_right = 428.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square27" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 330.0
+margin_right = 428.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square28" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 382.0
+margin_right = 428.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square29" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 434.0
+margin_right = 428.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square30" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 486.0
+margin_right = 428.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square31" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 538.0
+margin_right = 428.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square32" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 590.0
+margin_right = 428.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square33" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 642.0
+margin_right = 428.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square34" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 694.0
+margin_right = 428.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square35" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 746.0
+margin_right = 428.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square36" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 798.0
+margin_right = 428.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square37" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 850.0
+margin_right = 428.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square38" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 902.0
+margin_right = 428.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square39" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 954.0
+margin_right = 428.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square40" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 372.12
+margin_top = 1006.0
+margin_right = 428.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square41" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 18.0
+margin_right = 480.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square42" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 70.0
+margin_right = 480.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square43" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 122.0
+margin_right = 480.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square44" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 174.0
+margin_right = 480.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square45" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 226.0
+margin_right = 480.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square46" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 278.0
+margin_right = 480.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square47" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 330.0
+margin_right = 480.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square48" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 382.0
+margin_right = 480.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square49" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 434.0
+margin_right = 480.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square50" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 486.0
+margin_right = 480.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square51" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 538.0
+margin_right = 480.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square52" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 590.0
+margin_right = 480.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square53" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 642.0
+margin_right = 480.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square54" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 694.0
+margin_right = 480.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square55" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 746.0
+margin_right = 480.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square56" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 798.0
+margin_right = 480.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square57" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 850.0
+margin_right = 480.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square58" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 902.0
+margin_right = 480.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square59" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 954.0
+margin_right = 480.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square60" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 424.12
+margin_top = 1006.0
+margin_right = 480.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square61" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 18.0
+margin_right = 532.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square62" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 70.0
+margin_right = 532.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square63" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 122.0
+margin_right = 532.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square64" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 174.0
+margin_right = 532.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square65" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 226.0
+margin_right = 532.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square66" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 278.0
+margin_right = 532.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square67" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 330.0
+margin_right = 532.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square68" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 382.0
+margin_right = 532.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square69" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 434.0
+margin_right = 532.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square70" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 486.0
+margin_right = 532.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square71" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 538.0
+margin_right = 532.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square72" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 590.0
+margin_right = 532.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square73" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 642.0
+margin_right = 532.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square74" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 694.0
+margin_right = 532.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square75" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 746.0
+margin_right = 532.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square76" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 798.0
+margin_right = 532.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square77" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 850.0
+margin_right = 532.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square78" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 902.0
+margin_right = 532.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square79" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 954.0
+margin_right = 532.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square80" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 476.12
+margin_top = 1006.0
+margin_right = 532.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square81" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 18.0
+margin_right = 584.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square82" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 70.0
+margin_right = 584.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square83" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 122.0
+margin_right = 584.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square84" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 174.0
+margin_right = 584.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square85" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 226.0
+margin_right = 584.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square86" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 278.0
+margin_right = 584.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square87" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 330.0
+margin_right = 584.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square88" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 382.0
+margin_right = 584.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square89" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 434.0
+margin_right = 584.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square90" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 486.0
+margin_right = 584.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square91" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 538.0
+margin_right = 584.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square92" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 590.0
+margin_right = 584.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square93" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 642.0
+margin_right = 584.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square94" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 694.0
+margin_right = 584.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square95" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 746.0
+margin_right = 584.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square96" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 798.0
+margin_right = 584.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square97" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 850.0
+margin_right = 584.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square98" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 902.0
+margin_right = 584.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square99" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 954.0
+margin_right = 584.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square100" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 528.12
+margin_top = 1006.0
+margin_right = 584.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square101" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 18.0
+margin_right = 636.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square102" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 70.0
+margin_right = 636.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square103" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 122.0
+margin_right = 636.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square104" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 174.0
+margin_right = 636.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square105" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 226.0
+margin_right = 636.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square106" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 278.0
+margin_right = 636.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square107" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 330.0
+margin_right = 636.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square108" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 382.0
+margin_right = 636.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square109" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 434.0
+margin_right = 636.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square110" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 486.0
+margin_right = 636.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square111" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 538.0
+margin_right = 636.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square112" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 590.0
+margin_right = 636.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square113" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 642.0
+margin_right = 636.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square114" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 694.0
+margin_right = 636.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square115" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 746.0
+margin_right = 636.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square116" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 798.0
+margin_right = 636.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square117" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 850.0
+margin_right = 636.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square118" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 902.0
+margin_right = 636.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square119" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 954.0
+margin_right = 636.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square120" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 580.12
+margin_top = 1006.0
+margin_right = 636.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square121" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 18.0
+margin_right = 688.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square122" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 70.0
+margin_right = 688.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square123" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 122.0
+margin_right = 688.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square124" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 174.0
+margin_right = 688.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square125" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 226.0
+margin_right = 688.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square126" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 278.0
+margin_right = 688.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square127" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 330.0
+margin_right = 688.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square128" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 382.0
+margin_right = 688.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square129" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 434.0
+margin_right = 688.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square130" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 486.0
+margin_right = 688.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square131" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 538.0
+margin_right = 688.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square132" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 590.0
+margin_right = 688.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square133" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 642.0
+margin_right = 688.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square134" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 694.0
+margin_right = 688.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square135" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 746.0
+margin_right = 688.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square136" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 798.0
+margin_right = 688.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square137" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 850.0
+margin_right = 688.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square138" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 902.0
+margin_right = 688.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square139" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 954.0
+margin_right = 688.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square140" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 632.12
+margin_top = 1006.0
+margin_right = 688.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square141" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 18.0
+margin_right = 740.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square142" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 70.0
+margin_right = 740.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square143" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 122.0
+margin_right = 740.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square144" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 174.0
+margin_right = 740.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square145" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 226.0
+margin_right = 740.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square146" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 278.0
+margin_right = 740.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square147" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 330.0
+margin_right = 740.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square148" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 382.0
+margin_right = 740.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square149" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 434.0
+margin_right = 740.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square150" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 486.0
+margin_right = 740.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square151" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 538.0
+margin_right = 740.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square152" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 590.0
+margin_right = 740.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square153" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 642.0
+margin_right = 740.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square154" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 694.0
+margin_right = 740.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square155" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 746.0
+margin_right = 740.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square156" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 798.0
+margin_right = 740.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square157" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 850.0
+margin_right = 740.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square158" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 902.0
+margin_right = 740.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square159" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 954.0
+margin_right = 740.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square160" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 684.12
+margin_top = 1006.0
+margin_right = 740.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square161" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 18.0
+margin_right = 792.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square162" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 70.0
+margin_right = 792.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square163" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 122.0
+margin_right = 792.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square164" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 174.0
+margin_right = 792.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square165" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 226.0
+margin_right = 792.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square166" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 278.0
+margin_right = 792.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square167" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 330.0
+margin_right = 792.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square168" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 382.0
+margin_right = 792.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square169" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 434.0
+margin_right = 792.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square170" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 486.0
+margin_right = 792.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square171" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 538.0
+margin_right = 792.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square172" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 590.0
+margin_right = 792.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square173" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 642.0
+margin_right = 792.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square174" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 694.0
+margin_right = 792.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square175" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 746.0
+margin_right = 792.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square176" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 798.0
+margin_right = 792.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square177" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 850.0
+margin_right = 792.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square178" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 902.0
+margin_right = 792.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square179" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 954.0
+margin_right = 792.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square180" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 736.12
+margin_top = 1006.0
+margin_right = 792.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square181" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 18.0
+margin_right = 844.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square182" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 70.0
+margin_right = 844.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square183" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 122.0
+margin_right = 844.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square184" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 174.0
+margin_right = 844.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square185" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 226.0
+margin_right = 844.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square186" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 278.0
+margin_right = 844.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square187" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 330.0
+margin_right = 844.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square188" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 382.0
+margin_right = 844.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square189" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 434.0
+margin_right = 844.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square190" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 486.0
+margin_right = 844.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square191" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 538.0
+margin_right = 844.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square192" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 590.0
+margin_right = 844.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square193" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 642.0
+margin_right = 844.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square194" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 694.0
+margin_right = 844.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square195" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 746.0
+margin_right = 844.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square196" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 798.0
+margin_right = 844.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square197" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 850.0
+margin_right = 844.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square198" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 902.0
+margin_right = 844.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square199" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 954.0
+margin_right = 844.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square200" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 788.12
+margin_top = 1006.0
+margin_right = 844.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square201" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 18.0
+margin_right = 896.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square202" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 70.0
+margin_right = 896.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square203" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 122.0
+margin_right = 896.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square204" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 174.0
+margin_right = 896.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square205" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 226.0
+margin_right = 896.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square206" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 278.0
+margin_right = 896.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square207" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 330.0
+margin_right = 896.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square208" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 382.0
+margin_right = 896.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square209" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 434.0
+margin_right = 896.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square210" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 486.0
+margin_right = 896.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square211" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 538.0
+margin_right = 896.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square212" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 590.0
+margin_right = 896.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square213" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 642.0
+margin_right = 896.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square214" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 694.0
+margin_right = 896.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square215" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 746.0
+margin_right = 896.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square216" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 798.0
+margin_right = 896.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square217" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 850.0
+margin_right = 896.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square218" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 902.0
+margin_right = 896.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square219" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 954.0
+margin_right = 896.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square220" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 840.12
+margin_top = 1006.0
+margin_right = 896.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square221" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 18.0
+margin_right = 948.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square222" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 70.0
+margin_right = 948.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square223" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 122.0
+margin_right = 948.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square224" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 174.0
+margin_right = 948.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square225" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 226.0
+margin_right = 948.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square226" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 278.0
+margin_right = 948.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square227" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 330.0
+margin_right = 948.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square228" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 382.0
+margin_right = 948.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square229" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 434.0
+margin_right = 948.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square230" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 486.0
+margin_right = 948.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square231" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 538.0
+margin_right = 948.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square232" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 590.0
+margin_right = 948.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square233" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 642.0
+margin_right = 948.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square234" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 694.0
+margin_right = 948.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square235" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 746.0
+margin_right = 948.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square236" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 798.0
+margin_right = 948.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square237" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 850.0
+margin_right = 948.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square238" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 902.0
+margin_right = 948.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square239" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 954.0
+margin_right = 948.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square240" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 892.12
+margin_top = 1006.0
+margin_right = 948.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square241" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 18.0
+margin_right = 999.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square242" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 70.0
+margin_right = 999.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square243" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 122.0
+margin_right = 999.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square244" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 174.0
+margin_right = 999.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square245" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 226.0
+margin_right = 999.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square246" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 278.0
+margin_right = 999.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square247" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 330.0
+margin_right = 999.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square248" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 382.0
+margin_right = 999.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square249" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 434.0
+margin_right = 999.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square250" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 486.0
+margin_right = 999.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square251" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 538.0
+margin_right = 999.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square252" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 590.0
+margin_right = 999.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square253" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 642.0
+margin_right = 999.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square254" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 694.0
+margin_right = 999.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square255" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 746.0
+margin_right = 999.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square256" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 798.0
+margin_right = 999.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square257" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 850.0
+margin_right = 999.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square258" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 902.0
+margin_right = 999.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square259" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 954.0
+margin_right = 999.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square260" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 943.12
+margin_top = 1006.0
+margin_right = 999.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square261" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 18.0
+margin_right = 1051.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square262" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 70.0
+margin_right = 1051.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square263" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 122.0
+margin_right = 1051.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square264" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 174.0
+margin_right = 1051.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square265" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 226.0
+margin_right = 1051.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square266" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 278.0
+margin_right = 1051.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square267" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 330.0
+margin_right = 1051.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square268" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 382.0
+margin_right = 1051.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square269" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 434.0
+margin_right = 1051.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square270" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 486.0
+margin_right = 1051.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square271" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 538.0
+margin_right = 1051.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square272" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 590.0
+margin_right = 1051.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square273" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 642.0
+margin_right = 1051.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square274" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 694.0
+margin_right = 1051.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square275" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 746.0
+margin_right = 1051.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square276" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 798.0
+margin_right = 1051.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square277" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 850.0
+margin_right = 1051.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square278" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 902.0
+margin_right = 1051.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square279" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 954.0
+margin_right = 1051.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square280" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 995.12
+margin_top = 1006.0
+margin_right = 1051.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square281" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 18.0
+margin_right = 1103.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square282" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 70.0
+margin_right = 1103.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square283" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 122.0
+margin_right = 1103.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square284" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 174.0
+margin_right = 1103.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square285" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 226.0
+margin_right = 1103.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square286" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 278.0
+margin_right = 1103.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square287" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 330.0
+margin_right = 1103.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square288" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 382.0
+margin_right = 1103.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square289" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 434.0
+margin_right = 1103.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square290" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 486.0
+margin_right = 1103.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square291" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 538.0
+margin_right = 1103.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square292" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 590.0
+margin_right = 1103.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square293" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 642.0
+margin_right = 1103.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square294" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 694.0
+margin_right = 1103.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square295" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 746.0
+margin_right = 1103.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square296" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 798.0
+margin_right = 1103.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square297" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 850.0
+margin_right = 1103.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square298" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 902.0
+margin_right = 1103.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square299" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 954.0
+margin_right = 1103.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square300" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1047.12
+margin_top = 1006.0
+margin_right = 1103.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square301" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 18.0
+margin_right = 1155.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square302" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 70.0
+margin_right = 1155.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square303" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 122.0
+margin_right = 1155.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square304" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 174.0
+margin_right = 1155.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square305" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 226.0
+margin_right = 1155.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square306" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 278.0
+margin_right = 1155.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square307" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 330.0
+margin_right = 1155.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square308" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 382.0
+margin_right = 1155.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square309" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 434.0
+margin_right = 1155.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square310" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 486.0
+margin_right = 1155.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square311" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 538.0
+margin_right = 1155.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square312" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 590.0
+margin_right = 1155.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square313" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 642.0
+margin_right = 1155.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square314" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 694.0
+margin_right = 1155.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square315" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 746.0
+margin_right = 1155.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square316" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 798.0
+margin_right = 1155.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square317" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 850.0
+margin_right = 1155.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square318" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 902.0
+margin_right = 1155.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square319" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 954.0
+margin_right = 1155.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square320" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1099.12
+margin_top = 1006.0
+margin_right = 1155.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square321" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 18.0
+margin_right = 1207.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square322" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 70.0
+margin_right = 1207.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square323" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 122.0
+margin_right = 1207.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square324" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 174.0
+margin_right = 1207.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square325" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 226.0
+margin_right = 1207.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square326" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 278.0
+margin_right = 1207.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square327" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 330.0
+margin_right = 1207.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square328" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 382.0
+margin_right = 1207.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square329" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 434.0
+margin_right = 1207.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square330" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 486.0
+margin_right = 1207.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square331" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 538.0
+margin_right = 1207.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square332" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 590.0
+margin_right = 1207.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square333" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 642.0
+margin_right = 1207.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square334" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 694.0
+margin_right = 1207.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square335" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 746.0
+margin_right = 1207.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square336" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 798.0
+margin_right = 1207.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square337" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 850.0
+margin_right = 1207.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square338" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 902.0
+margin_right = 1207.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square339" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 954.0
+margin_right = 1207.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square340" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1151.12
+margin_top = 1006.0
+margin_right = 1207.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square341" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 18.0
+margin_right = 1259.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square342" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 70.0
+margin_right = 1259.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square343" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 122.0
+margin_right = 1259.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square344" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 174.0
+margin_right = 1259.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square345" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 226.0
+margin_right = 1259.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square346" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 278.0
+margin_right = 1259.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square347" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 330.0
+margin_right = 1259.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square348" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 382.0
+margin_right = 1259.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square349" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 434.0
+margin_right = 1259.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square350" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 486.0
+margin_right = 1259.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square351" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 538.0
+margin_right = 1259.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square352" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 590.0
+margin_right = 1259.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square353" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 642.0
+margin_right = 1259.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square354" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 694.0
+margin_right = 1259.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square355" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 746.0
+margin_right = 1259.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square356" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 798.0
+margin_right = 1259.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square357" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 850.0
+margin_right = 1259.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square358" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 902.0
+margin_right = 1259.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square359" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 954.0
+margin_right = 1259.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square360" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1203.12
+margin_top = 1006.0
+margin_right = 1259.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square361" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 18.0
+margin_right = 1311.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square362" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 70.0
+margin_right = 1311.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square363" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 122.0
+margin_right = 1311.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square364" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 174.0
+margin_right = 1311.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square365" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 226.0
+margin_right = 1311.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square366" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 278.0
+margin_right = 1311.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square367" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 330.0
+margin_right = 1311.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square368" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 382.0
+margin_right = 1311.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square369" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 434.0
+margin_right = 1311.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square370" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 486.0
+margin_right = 1311.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square371" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 538.0
+margin_right = 1311.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square372" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 590.0
+margin_right = 1311.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square373" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 642.0
+margin_right = 1311.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square374" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 694.0
+margin_right = 1311.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square375" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 746.0
+margin_right = 1311.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square376" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 798.0
+margin_right = 1311.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square377" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 850.0
+margin_right = 1311.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square378" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 902.0
+margin_right = 1311.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square379" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 954.0
+margin_right = 1311.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square380" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1255.12
+margin_top = 1006.0
+margin_right = 1311.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square381" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 18.0
+margin_right = 1363.12
+margin_bottom = 74.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square382" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 70.0
+margin_right = 1363.12
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square383" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 122.0
+margin_right = 1363.12
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square384" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 174.0
+margin_right = 1363.12
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square385" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 226.0
+margin_right = 1363.12
+margin_bottom = 282.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square386" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 278.0
+margin_right = 1363.12
+margin_bottom = 334.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square387" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 330.0
+margin_right = 1363.12
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square388" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 382.0
+margin_right = 1363.12
+margin_bottom = 438.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square389" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 434.0
+margin_right = 1363.12
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square390" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 486.0
+margin_right = 1363.12
+margin_bottom = 542.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square391" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 538.0
+margin_right = 1363.12
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square392" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 590.0
+margin_right = 1363.12
+margin_bottom = 646.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square393" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 642.0
+margin_right = 1363.12
+margin_bottom = 698.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square394" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 694.0
+margin_right = 1363.12
+margin_bottom = 750.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square395" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 746.0
+margin_right = 1363.12
+margin_bottom = 802.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square396" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 798.0
+margin_right = 1363.12
+margin_bottom = 854.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square397" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 850.0
+margin_right = 1363.12
+margin_bottom = 906.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square398" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 902.0
+margin_right = 1363.12
+margin_bottom = 958.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square399" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 954.0
+margin_right = 1363.12
+margin_bottom = 1010.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="square400" type="PanelContainer" parent="background/backgroundSquares"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_left = 1307.12
+margin_top = 1006.0
+margin_right = 1363.12
+margin_bottom = 1062.0
+rect_pivot_offset = Vector2( 28, 28 )
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="startPoints" type="Control" parent="background"]
+anchor_right = 35.015
+anchor_bottom = 27.069
+margin_right = -1132.6
+margin_bottom = -848.76
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerOneStartPoint1" type="ColorRect" parent="background/startPoints"]
+margin_left = 324.0
+margin_top = 22.0
+margin_right = 348.0
+margin_bottom = 46.0
+rect_pivot_offset = Vector2( 10, 5 )
+color = Color( 0.4, 0.6, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerOneStartPoint2" type="ColorRect" parent="background/startPoints"]
+margin_left = 348.0
+margin_top = 46.0
+margin_right = 372.0
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( 10, 5 )
+color = Color( 0.4, 0.6, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerTwoStartPoint1" type="ColorRect" parent="background/startPoints"]
+margin_left = 1311.0
+margin_top = 1010.0
+margin_right = 1335.0
+margin_bottom = 1034.0
+rect_pivot_offset = Vector2( 10, 5 )
+color = Color( 1, 0.2, 0.6, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerTwoStartPoint2" type="ColorRect" parent="background/startPoints"]
+anchor_left = 1.194
+anchor_right = 5.209
+anchor_bottom = 4.598
+margin_left = 1015.01
+margin_top = 1034.0
+margin_right = -37.014
+margin_bottom = -17.932
+rect_pivot_offset = Vector2( 10, 5 )
+color = Color( 1, 0.2, 0.6, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 0.596078 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGameButton" type="Button" parent="."]
+margin_left = 684.0
+margin_top = 490.0
+margin_right = 1236.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 552, 100 )
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Start game"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="StartGameButton" to="." method="_on_StartGameButton_button_up"]
