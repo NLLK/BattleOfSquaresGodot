@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Styles/mainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Game/gameMain_script.gd" type="Script" id=2]
@@ -13,19 +13,24 @@ border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
 corner_detail = 1
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 24 )
+
 [node name="Node2D" type="Node2D"]
 light_mask = 0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0 ],
-"_edit_vertical_guides_": [ 320.0 ]
+"_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0, 1062.0 ],
+"_edit_vertical_guides_": [ 320.0, 1364.0 ]
 }
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-__meta__ = {
-"_editor_description_": "You can use it when game is over"
-}
+[node name="errorTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="beforeEndTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [node name="SquarePlayerOne" type="Control" parent="."]
 anchor_right = 1.0
@@ -34,12 +39,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="background" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="background" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="backgroundCollisionPolygon" type="CollisionPolygon2D" parent="background"]
+position = Vector2( -7.62939e-06, 45.1437 )
+scale = Vector2( 1, 52.2708 )
+polygon = PoolVector2Array( 1.00001, -0.921044, 320, -0.863651, 1920, -0.84452, 1920, -0.500159, 1922, 19.7788, 1381, 19.798, 317, 19.798, 316, 19.5493, 1373, 19.6258, 1376, -0.614946, 314, -0.653208, 313, 19.798, 1.00001, 19.7597 )
 
 [node name="backgroundRectangle" type="ColorRect" parent="background"]
 margin_right = 1920.0
@@ -3418,9 +3425,9 @@ __meta__ = {
 [node name="square241" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 18.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3432,9 +3439,9 @@ __meta__ = {
 [node name="square242" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 70.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3446,9 +3453,9 @@ __meta__ = {
 [node name="square243" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 122.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3460,9 +3467,9 @@ __meta__ = {
 [node name="square244" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 174.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3474,9 +3481,9 @@ __meta__ = {
 [node name="square245" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 226.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3488,9 +3495,9 @@ __meta__ = {
 [node name="square246" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 278.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3502,9 +3509,9 @@ __meta__ = {
 [node name="square247" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 330.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3516,9 +3523,9 @@ __meta__ = {
 [node name="square248" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 382.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3530,9 +3537,9 @@ __meta__ = {
 [node name="square249" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 434.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3544,9 +3551,9 @@ __meta__ = {
 [node name="square250" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 486.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3558,9 +3565,9 @@ __meta__ = {
 [node name="square251" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 538.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3572,9 +3579,9 @@ __meta__ = {
 [node name="square252" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 590.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3586,9 +3593,9 @@ __meta__ = {
 [node name="square253" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 642.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3600,9 +3607,9 @@ __meta__ = {
 [node name="square254" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 694.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3614,9 +3621,9 @@ __meta__ = {
 [node name="square255" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 746.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3628,9 +3635,9 @@ __meta__ = {
 [node name="square256" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 798.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3642,9 +3649,9 @@ __meta__ = {
 [node name="square257" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 850.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3656,9 +3663,9 @@ __meta__ = {
 [node name="square258" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 902.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3670,9 +3677,9 @@ __meta__ = {
 [node name="square259" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 954.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3684,9 +3691,9 @@ __meta__ = {
 [node name="square260" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 943.12
+margin_left = 944.12
 margin_top = 1006.0
-margin_right = 999.12
+margin_right = 1000.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3698,9 +3705,9 @@ __meta__ = {
 [node name="square261" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 18.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3712,9 +3719,9 @@ __meta__ = {
 [node name="square262" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 70.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3726,9 +3733,9 @@ __meta__ = {
 [node name="square263" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 122.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3740,9 +3747,9 @@ __meta__ = {
 [node name="square264" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 174.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3754,9 +3761,9 @@ __meta__ = {
 [node name="square265" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 226.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3768,9 +3775,9 @@ __meta__ = {
 [node name="square266" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 278.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3782,9 +3789,9 @@ __meta__ = {
 [node name="square267" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 330.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3796,9 +3803,9 @@ __meta__ = {
 [node name="square268" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 382.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3810,9 +3817,9 @@ __meta__ = {
 [node name="square269" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 434.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3824,9 +3831,9 @@ __meta__ = {
 [node name="square270" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 486.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3838,9 +3845,9 @@ __meta__ = {
 [node name="square271" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 538.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3852,9 +3859,9 @@ __meta__ = {
 [node name="square272" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 590.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3866,9 +3873,9 @@ __meta__ = {
 [node name="square273" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 642.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3880,9 +3887,9 @@ __meta__ = {
 [node name="square274" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 694.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3894,9 +3901,9 @@ __meta__ = {
 [node name="square275" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 746.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3908,9 +3915,9 @@ __meta__ = {
 [node name="square276" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 798.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3922,9 +3929,9 @@ __meta__ = {
 [node name="square277" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 850.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3936,9 +3943,9 @@ __meta__ = {
 [node name="square278" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 902.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3950,9 +3957,9 @@ __meta__ = {
 [node name="square279" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 954.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3964,9 +3971,9 @@ __meta__ = {
 [node name="square280" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 995.12
+margin_left = 996.12
 margin_top = 1006.0
-margin_right = 1051.12
+margin_right = 1052.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3978,9 +3985,9 @@ __meta__ = {
 [node name="square281" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 18.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -3992,9 +3999,9 @@ __meta__ = {
 [node name="square282" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 70.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4006,9 +4013,9 @@ __meta__ = {
 [node name="square283" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 122.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4020,9 +4027,9 @@ __meta__ = {
 [node name="square284" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 174.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4034,9 +4041,9 @@ __meta__ = {
 [node name="square285" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 226.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4048,9 +4055,9 @@ __meta__ = {
 [node name="square286" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 278.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4062,9 +4069,9 @@ __meta__ = {
 [node name="square287" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 330.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4076,9 +4083,9 @@ __meta__ = {
 [node name="square288" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 382.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4090,9 +4097,9 @@ __meta__ = {
 [node name="square289" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 434.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4104,9 +4111,9 @@ __meta__ = {
 [node name="square290" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 486.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4118,9 +4125,9 @@ __meta__ = {
 [node name="square291" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 538.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4132,9 +4139,9 @@ __meta__ = {
 [node name="square292" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 590.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4146,9 +4153,9 @@ __meta__ = {
 [node name="square293" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 642.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4160,9 +4167,9 @@ __meta__ = {
 [node name="square294" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 694.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4174,9 +4181,9 @@ __meta__ = {
 [node name="square295" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 746.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4188,9 +4195,9 @@ __meta__ = {
 [node name="square296" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 798.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4202,9 +4209,9 @@ __meta__ = {
 [node name="square297" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 850.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4216,9 +4223,9 @@ __meta__ = {
 [node name="square298" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 902.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4230,9 +4237,9 @@ __meta__ = {
 [node name="square299" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 954.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4244,9 +4251,9 @@ __meta__ = {
 [node name="square300" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1047.12
+margin_left = 1048.12
 margin_top = 1006.0
-margin_right = 1103.12
+margin_right = 1104.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4258,9 +4265,9 @@ __meta__ = {
 [node name="square301" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 18.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4272,9 +4279,9 @@ __meta__ = {
 [node name="square302" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 70.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4286,9 +4293,9 @@ __meta__ = {
 [node name="square303" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 122.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4300,9 +4307,9 @@ __meta__ = {
 [node name="square304" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 174.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4314,9 +4321,9 @@ __meta__ = {
 [node name="square305" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 226.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4328,9 +4335,9 @@ __meta__ = {
 [node name="square306" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 278.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4342,9 +4349,9 @@ __meta__ = {
 [node name="square307" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 330.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4356,9 +4363,9 @@ __meta__ = {
 [node name="square308" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 382.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4370,9 +4377,9 @@ __meta__ = {
 [node name="square309" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 434.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4384,9 +4391,9 @@ __meta__ = {
 [node name="square310" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 486.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4398,9 +4405,9 @@ __meta__ = {
 [node name="square311" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 538.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4412,9 +4419,9 @@ __meta__ = {
 [node name="square312" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 590.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4426,9 +4433,9 @@ __meta__ = {
 [node name="square313" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 642.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4440,9 +4447,9 @@ __meta__ = {
 [node name="square314" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 694.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4454,9 +4461,9 @@ __meta__ = {
 [node name="square315" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 746.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4468,9 +4475,9 @@ __meta__ = {
 [node name="square316" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 798.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4482,9 +4489,9 @@ __meta__ = {
 [node name="square317" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 850.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4496,9 +4503,9 @@ __meta__ = {
 [node name="square318" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 902.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4510,9 +4517,9 @@ __meta__ = {
 [node name="square319" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 954.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4524,9 +4531,9 @@ __meta__ = {
 [node name="square320" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1099.12
+margin_left = 1100.12
 margin_top = 1006.0
-margin_right = 1155.12
+margin_right = 1156.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4538,9 +4545,9 @@ __meta__ = {
 [node name="square321" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 18.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4552,9 +4559,9 @@ __meta__ = {
 [node name="square322" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 70.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4566,9 +4573,9 @@ __meta__ = {
 [node name="square323" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 122.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4580,9 +4587,9 @@ __meta__ = {
 [node name="square324" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 174.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4594,9 +4601,9 @@ __meta__ = {
 [node name="square325" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 226.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4608,9 +4615,9 @@ __meta__ = {
 [node name="square326" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 278.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4622,9 +4629,9 @@ __meta__ = {
 [node name="square327" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 330.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4636,9 +4643,9 @@ __meta__ = {
 [node name="square328" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 382.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4650,9 +4657,9 @@ __meta__ = {
 [node name="square329" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 434.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4664,9 +4671,9 @@ __meta__ = {
 [node name="square330" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 486.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4678,9 +4685,9 @@ __meta__ = {
 [node name="square331" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 538.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4692,9 +4699,9 @@ __meta__ = {
 [node name="square332" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 590.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4706,9 +4713,9 @@ __meta__ = {
 [node name="square333" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 642.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4720,9 +4727,9 @@ __meta__ = {
 [node name="square334" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 694.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4734,9 +4741,9 @@ __meta__ = {
 [node name="square335" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 746.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4748,9 +4755,9 @@ __meta__ = {
 [node name="square336" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 798.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4762,9 +4769,9 @@ __meta__ = {
 [node name="square337" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 850.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4776,9 +4783,9 @@ __meta__ = {
 [node name="square338" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 902.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4790,9 +4797,9 @@ __meta__ = {
 [node name="square339" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 954.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4804,9 +4811,9 @@ __meta__ = {
 [node name="square340" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1151.12
+margin_left = 1152.12
 margin_top = 1006.0
-margin_right = 1207.12
+margin_right = 1208.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4818,9 +4825,9 @@ __meta__ = {
 [node name="square341" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 18.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4832,9 +4839,9 @@ __meta__ = {
 [node name="square342" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 70.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4846,9 +4853,9 @@ __meta__ = {
 [node name="square343" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 122.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4860,9 +4867,9 @@ __meta__ = {
 [node name="square344" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 174.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4874,9 +4881,9 @@ __meta__ = {
 [node name="square345" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 226.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4888,9 +4895,9 @@ __meta__ = {
 [node name="square346" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 278.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4902,9 +4909,9 @@ __meta__ = {
 [node name="square347" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 330.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4916,9 +4923,9 @@ __meta__ = {
 [node name="square348" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 382.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4930,9 +4937,9 @@ __meta__ = {
 [node name="square349" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 434.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4944,9 +4951,9 @@ __meta__ = {
 [node name="square350" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 486.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4958,9 +4965,9 @@ __meta__ = {
 [node name="square351" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 538.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4972,9 +4979,9 @@ __meta__ = {
 [node name="square352" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 590.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -4986,9 +4993,9 @@ __meta__ = {
 [node name="square353" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 642.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5000,9 +5007,9 @@ __meta__ = {
 [node name="square354" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 694.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5014,9 +5021,9 @@ __meta__ = {
 [node name="square355" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 746.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5028,9 +5035,9 @@ __meta__ = {
 [node name="square356" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 798.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5042,9 +5049,9 @@ __meta__ = {
 [node name="square357" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 850.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5056,9 +5063,9 @@ __meta__ = {
 [node name="square358" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 902.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5070,9 +5077,9 @@ __meta__ = {
 [node name="square359" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 954.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5084,9 +5091,9 @@ __meta__ = {
 [node name="square360" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1203.12
+margin_left = 1204.12
 margin_top = 1006.0
-margin_right = 1259.12
+margin_right = 1260.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5098,9 +5105,9 @@ __meta__ = {
 [node name="square361" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 18.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5112,9 +5119,9 @@ __meta__ = {
 [node name="square362" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 70.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5126,9 +5133,9 @@ __meta__ = {
 [node name="square363" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 122.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5140,9 +5147,9 @@ __meta__ = {
 [node name="square364" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 174.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5154,9 +5161,9 @@ __meta__ = {
 [node name="square365" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 226.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5168,9 +5175,9 @@ __meta__ = {
 [node name="square366" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 278.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5182,9 +5189,9 @@ __meta__ = {
 [node name="square367" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 330.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5196,9 +5203,9 @@ __meta__ = {
 [node name="square368" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 382.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5210,9 +5217,9 @@ __meta__ = {
 [node name="square369" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 434.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5224,9 +5231,9 @@ __meta__ = {
 [node name="square370" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 486.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5238,9 +5245,9 @@ __meta__ = {
 [node name="square371" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 538.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5252,9 +5259,9 @@ __meta__ = {
 [node name="square372" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 590.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5266,9 +5273,9 @@ __meta__ = {
 [node name="square373" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 642.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5280,9 +5287,9 @@ __meta__ = {
 [node name="square374" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 694.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5294,9 +5301,9 @@ __meta__ = {
 [node name="square375" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 746.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5308,9 +5315,9 @@ __meta__ = {
 [node name="square376" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 798.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5322,9 +5329,9 @@ __meta__ = {
 [node name="square377" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 850.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5336,9 +5343,9 @@ __meta__ = {
 [node name="square378" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 902.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5350,9 +5357,9 @@ __meta__ = {
 [node name="square379" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 954.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5364,9 +5371,9 @@ __meta__ = {
 [node name="square380" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1255.12
+margin_left = 1256.12
 margin_top = 1006.0
-margin_right = 1311.12
+margin_right = 1312.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5378,9 +5385,9 @@ __meta__ = {
 [node name="square381" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 18.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5392,9 +5399,9 @@ __meta__ = {
 [node name="square382" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 70.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 126.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5406,9 +5413,9 @@ __meta__ = {
 [node name="square383" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 122.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 178.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5420,9 +5427,9 @@ __meta__ = {
 [node name="square384" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 174.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 230.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5434,9 +5441,9 @@ __meta__ = {
 [node name="square385" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 226.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 282.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5448,9 +5455,9 @@ __meta__ = {
 [node name="square386" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 278.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 334.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5462,9 +5469,9 @@ __meta__ = {
 [node name="square387" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 330.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 386.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5476,9 +5483,9 @@ __meta__ = {
 [node name="square388" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 382.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 438.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5490,9 +5497,9 @@ __meta__ = {
 [node name="square389" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 434.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 490.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5504,9 +5511,9 @@ __meta__ = {
 [node name="square390" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 486.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 542.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5518,9 +5525,9 @@ __meta__ = {
 [node name="square391" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 538.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 594.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5532,9 +5539,9 @@ __meta__ = {
 [node name="square392" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 590.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 646.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5546,9 +5553,9 @@ __meta__ = {
 [node name="square393" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 642.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 698.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5560,9 +5567,9 @@ __meta__ = {
 [node name="square394" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 694.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 750.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5574,9 +5581,9 @@ __meta__ = {
 [node name="square395" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 746.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 802.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5588,9 +5595,9 @@ __meta__ = {
 [node name="square396" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 798.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 854.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5602,9 +5609,9 @@ __meta__ = {
 [node name="square397" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 850.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 906.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5616,9 +5623,9 @@ __meta__ = {
 [node name="square398" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 902.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 958.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5630,9 +5637,9 @@ __meta__ = {
 [node name="square399" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 954.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 1010.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5644,9 +5651,9 @@ __meta__ = {
 [node name="square400" type="PanelContainer" parent="background/backgroundSquares"]
 anchor_left = -0.003
 anchor_right = -0.003
-margin_left = 1307.12
+margin_left = 1308.12
 margin_top = 1006.0
-margin_right = 1363.12
+margin_right = 1364.12
 margin_bottom = 1062.0
 rect_pivot_offset = Vector2( 28, 28 )
 size_flags_horizontal = 0
@@ -5666,7 +5673,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerOneStartPoint1" type="ColorRect" parent="background/startPoints"]
+[node name="playerOneStartPoints" type="Area2D" parent="background/startPoints"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="playerOneStartPoint1" type="ColorRect" parent="background/startPoints/playerOneStartPoints"]
 margin_left = 324.0
 margin_top = 22.0
 margin_right = 348.0
@@ -5677,7 +5688,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerOneStartPoint2" type="ColorRect" parent="background/startPoints"]
+[node name="playerOneStartPoint2" type="ColorRect" parent="background/startPoints/playerOneStartPoints"]
 margin_left = 348.0
 margin_top = 46.0
 margin_right = 372.0
@@ -5688,10 +5699,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerTwoStartPoint1" type="ColorRect" parent="background/startPoints"]
-margin_left = 1311.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/startPoints/playerOneStartPoints"]
+position = Vector2( 348, 46 )
+shape = SubResource( 2 )
+
+[node name="playerTwoStartPoints" type="Area2D" parent="background/startPoints"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="playerTwoStartPoint2" type="ColorRect" parent="background/startPoints/playerTwoStartPoints"]
+margin_left = 1336.0
+margin_top = 1034.0
+margin_right = 1360.0
+margin_bottom = 1058.0
+rect_pivot_offset = Vector2( 10, 5 )
+color = Color( 1, 0.2, 0.6, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerTwoStartPoint1" type="ColorRect" parent="background/startPoints/playerTwoStartPoints"]
+margin_left = 1312.0
 margin_top = 1010.0
-margin_right = 1335.0
+margin_right = 1336.0
 margin_bottom = 1034.0
 rect_pivot_offset = Vector2( 10, 5 )
 color = Color( 1, 0.2, 0.6, 1 )
@@ -5699,22 +5729,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerTwoStartPoint2" type="ColorRect" parent="background/startPoints"]
-anchor_left = 1.194
-anchor_right = 5.209
-anchor_bottom = 4.598
-margin_left = 1015.01
-margin_top = 1034.0
-margin_right = -37.014
-margin_bottom = -17.932
-rect_pivot_offset = Vector2( 10, 5 )
-color = Color( 1, 0.2, 0.6, 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/startPoints/playerTwoStartPoints"]
+position = Vector2( 1336, 1034 )
+shape = SubResource( 2 )
+
+[node name="grayBackroundRect" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 0.596078 )
+margin_right = 1920.0
+margin_bottom = 1080.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 0, 0, 0, 0.596078 )
+[node name="PlayerSquares" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerSquares1" type="Control" parent="PlayerSquares"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerSquares2" type="Control" parent="PlayerSquares"]
 margin_right = 1920.0
 margin_bottom = 1080.0
 __meta__ = {
@@ -5736,4 +5777,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="timeout" from="errorTimer" to="." method="_on_errorTimer_timeout"]
+[connection signal="timeout" from="beforeEndTimer" to="." method="_on_beforeEndTimer_timeout"]
+[connection signal="area_entered" from="background" to="." method="_on_background_area_entered"]
+[connection signal="area_exited" from="background" to="." method="_on_background_area_exited"]
+[connection signal="area_entered" from="background/startPoints/playerOneStartPoints" to="." method="_on_playerOneStartPoints_area_entered"]
+[connection signal="area_exited" from="background/startPoints/playerOneStartPoints" to="." method="_on_playerOneStartPoints_area_exited"]
+[connection signal="area_entered" from="background/startPoints/playerTwoStartPoints" to="." method="_on_playerTwoStartPoints_area_entered"]
+[connection signal="area_exited" from="background/startPoints/playerTwoStartPoints" to="." method="_on_playerTwoStartPoints_area_exited"]
 [connection signal="button_up" from="StartGameButton" to="." method="_on_StartGameButton_button_up"]

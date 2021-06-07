@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Object",
+"class": "ScanningForEnd",
+"language": "GDScript",
+"path": "res://scanningForEnd_script.gd"
+} ]
+_global_script_class_icons={
+"ScanningForEnd": ""
+}
+
 [application]
 
 config/name="Battle Of Squares Godot"

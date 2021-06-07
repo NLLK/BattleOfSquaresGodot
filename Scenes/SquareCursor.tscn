@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 1
+
+[node name="SquarePlayerOne" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1620.0
+margin_bottom = -780.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+gravity = 0.0
+collision_layer = 2
+collision_mask = 3
+
+[node name="square" type="PanelContainer" parent="StaticBody2D"]
+anchor_left = -0.003
+anchor_right = -0.003
+margin_right = 56.0
+margin_bottom = 56.0
+size_flags_horizontal = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
