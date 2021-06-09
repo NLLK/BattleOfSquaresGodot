@@ -20,8 +20,8 @@ extents = Vector2( 24, 24 )
 light_mask = 0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0, 1062.0 ],
-"_edit_vertical_guides_": [ 320.0, 1364.0 ]
+"_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0, 1062.0, 1062.0 ],
+"_edit_vertical_guides_": [ 320.0, 1364.0, 1364.0 ]
 }
 
 [node name="errorTimer" type="Timer" parent="."]
@@ -31,13 +31,6 @@ one_shot = true
 [node name="beforeEndTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-
-[node name="SquarePlayerOne" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="background" type="Area2D" parent="."]
 collision_layer = 3
@@ -5737,6 +5730,13 @@ shape = SubResource( 2 )
 modulate = Color( 0, 0, 0, 0.596078 )
 margin_right = 1920.0
 margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="testingSquarePlace" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
