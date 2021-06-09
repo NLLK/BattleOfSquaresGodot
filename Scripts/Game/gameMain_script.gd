@@ -257,6 +257,7 @@ func change_team():
 	else:
 		cursorSquare.modulate = COLOR_TEAM_ONE
 		whoPlays = 0
+	print("Team changed. Now playing: Player "+(whoPlays+1)as String)
 
 func get_square(width, height):
 	var squareScene
@@ -433,11 +434,11 @@ func testingForEnd(width, height):
 		maxSize = height
 		minSize = width
 		
-	for x in range(0, 20-minSize):
-		for y in range(0,20-maxSize):
+	for y in range(0, 20-minSize):
+		for x in range(0,20-maxSize):
 			if (x==0 and y==0) or (x == 19 and y==19):
 				continue
-			if grid[x][y] != 0:
+			if grid[y][x] != 0:
 				continue
 			
 			for rotated in range(1):		
@@ -452,9 +453,9 @@ func testingForEnd(width, height):
 				
 				if (x+temp_width > 19 and y+temp_height > 19):
 					continue
-				for i in range(temp_width):
-					for j in range(temp_height):
-						if (grid[x+i][y+j] !=0):
+				for j in range(temp_height):
+					for i in range(temp_width):
+						if (grid[y+j][x+i] !=0):
 							isBreak = true
 							break
 						pass
@@ -466,97 +467,23 @@ func testingForEnd(width, height):
 					answer = true
 					continue
 				else:
+					var incI = 0
+					var incJ = 0
+					if (x == 0):
+						incI+=1
+					if (y == 0):
+						incJ+=1
+					if (x + temp_width > 19):
+						temp_width-=1
+					if (y + temp_height > 19):
+						temp_height-=1
 					
-					#добавить проверку на наличие рядом других блоков того же 
-					#цвета по окончанию проверки	
-					
-					answer = false
-					return answer
+					for j in range(y-1+incJ, y+temp_height+1):
+						for i in range(x-1+incI, x+temp_width+1):
+							if (grid[j][i] == whoPlays+1):
+								answer = false
+								return answer
 				pass
 			pass
 		pass
-
-#
-#	testingObject.Square = currentSquareToPlace.duplicate()
-#	testingObject.Square.set_name("testingSquare")
-#	var scene = testingObject.Square
-#
-#	testingObject.SquareSize = scene.get_node("Area2DSquare").get_node("square").rect_size
-#	var position
-#	if whoPlays == 0:
-#		position = FIELD_START_POINT + Vector2(52,0)
-#	else:
-#		position = FIELD_BORDERS - Vector2(52,52)
-#
-#	testingObject.Square.rect_position = position
-#
-#	if testingObject.SquareSize.x > testingObject.SquareSize.y:
-#		testingObject.MinSize = testingObject.SquareSize.y
-#		testingObject.BiggerSize = testingObject.SquareSize.x
-#	else: 
-#		testingObject.MinSize = testingObject.SquareSize.x
-#		testingObject.BiggerSize = testingObject.SquareSize.y
-#
-#
-#	add_child(testingObject.Square)	
-#
-#	print(gameTime as String+" T ; testingSquare placed")
-#	return false
-#
-#func testingForEnd():
-#	var found = false #change to false by default
-#
-#	var area1 = get_PlayerSquares_node(0)
-#	var area2 = get_PlayerSquares_node(1)
-#
-#	var area1ChildCount = area1.get_child_count()
-#	var area2ChildCount = area2.get_child_count()
-#
-#	if area1ChildCount == 0 or area2ChildCount == 0:
-#		found = true
-#	if found != true:
-#		if placingRules() == true:
-#			found = true
-#		else:			
-#			if whoPlays == 0:
-#				var howCloseToBorder = testingObject.Square.rect_position.x + testingObject.MinSize
-#				if howCloseToBorder <= FIELD_BORDERS.x:
-#					if testingObject.Rotated == 0:
-#						rotate_square(testingObject.Square, -90)
-#						testingObject.Square.rect_position += Vector2(0, testingObject.SquareSize.x)
-#						testingObject.Rotated = 1
-#					else:
-#						testingObject.Rotated = 0
-#						rotate_square(testingObject.Square, 90)
-#						testingObject.Square.rect_position -= Vector2(0, testingObject.SquareSize.x)
-#						testingObject.Square.rect_position += Vector2(52, 0)
-#				else:
-#					testingObject.Square.rect_position.x = FIELD_START_POINT.x
-#					if (testingObject.Square.rect_position.y + testingObject.BiggerSize < FIELD_BORDERS.y):
-#						testingObject.Square.rect_position.y += 52
-#			else:
-#				if testingObject.Square.rect_position.x >= FIELD_START_POINT.x:
-#					if testingObject.Rotated == 0:
-#						rotate_square(testingObject.Square, -90)
-#						#testingObject.Square.rect_position -= Vector2(0, testingObject.SquareSize.x)
-#						testingObject.Rotated = 1
-#					else:
-#						testingObject.Rotated = 0
-#						rotate_square(testingObject.Square, 90)
-#						#testingObject.Square.rect_position += Vector2(0, testingObject.SquareSize.x)
-#						testingObject.Square.rect_position -= Vector2(52, 0)
-#				else:
-#					testingObject.Square.rect_position.x = FIELD_BORDERS.x
-#					testingObject.Square.rect_position.y -= 52
-#
-#	#нужно все же пропускать те кубы, в которые точно есть попадание	
-#	if found == true:
-#		gameStage = GameStages.TESTED
-#		if testingObject.Square != null:
-#			testingObject.Square.free()
-#		get_node("PlayerSquares").add_child(currentSquareToPlace)
-#		currentSquareToPlace.rect_position = lastMousePosition
-#		rotationFixVector = Vector2(0,0)
-#		start_dice_animation_orSmth()
-#
-#
+	print("IT IS THE END!!!")
