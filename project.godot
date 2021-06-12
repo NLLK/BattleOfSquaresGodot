@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "ScanningForEnd",
 "language": "GDScript",
 "path": "res://scanningForEnd_script.gd"
+}, {
+"base": "Object",
+"class": "squareObject",
+"language": "GDScript",
+"path": "res://Scripts/Game/squareObject.gd"
 } ]
 _global_script_class_icons={
-"ScanningForEnd": ""
+"ScanningForEnd": "",
+"squareObject": ""
 }
 
 [application]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Styles/mainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Game/gameMain_script.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Menu/menu_script.gd" type="Script" id=3]
+[ext_resource path="res://src/TTSquares-Thin.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -16,6 +17,12 @@ corner_detail = 1
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 24 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 17
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
 [node name="Node2D" type="Node2D"]
 light_mask = 0
 script = ExtResource( 2 )
@@ -26,10 +33,6 @@ __meta__ = {
 
 [node name="errorTimer" type="Timer" parent="."]
 wait_time = 0.5
-one_shot = true
-
-[node name="beforeEndTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [node name="background" type="Area2D" parent="."]
@@ -5726,21 +5729,6 @@ __meta__ = {
 position = Vector2( 1336, 1034 )
 shape = SubResource( 2 )
 
-[node name="grayBackroundRect" type="ColorRect" parent="."]
-modulate = Color( 0, 0, 0, 0.596078 )
-margin_right = 1920.0
-margin_bottom = 1080.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="testingSquarePlace" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="PlayerSquares" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -5762,6 +5750,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="grayBackroundRect" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 0.596078 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="StartGameButton" type="Button" parent="."]
 margin_left = 684.0
 margin_top = 490.0
@@ -5777,8 +5773,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="debuggingText" type="RichTextLabel" parent="."]
+margin_left = 1365.0
+margin_top = 19.0
+margin_right = 1918.0
+margin_bottom = 535.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+tab_size = 0
+text = "ffff"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 298.0
+margin_top = 34.0
+margin_right = 363.0
+margin_bottom = 1078.0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 38
+text = "0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+margin_left = 341.0
+margin_top = 6.0
+margin_right = 677.0
+margin_bottom = 206.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 10
+text = "0         1             2            3          4           5            6            7           8          9           10         11         12         13         14         15         16         17         18         19"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="timeout" from="errorTimer" to="." method="_on_errorTimer_timeout"]
-[connection signal="timeout" from="beforeEndTimer" to="." method="_on_beforeEndTimer_timeout"]
 [connection signal="area_entered" from="background" to="." method="_on_background_area_entered"]
 [connection signal="area_exited" from="background" to="." method="_on_background_area_exited"]
 [connection signal="area_entered" from="background/startPoints/playerOneStartPoints" to="." method="_on_playerOneStartPoints_area_entered"]
