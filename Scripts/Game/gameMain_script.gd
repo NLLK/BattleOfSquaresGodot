@@ -7,9 +7,11 @@ const COLOR_CLEAR = Color("ffffff")
 const FIELD_BORDERS = Vector2(1360,1058)
 const FIELD_START_POINT = Vector2(320,18)
 
+const BEFORE_END_SECONDS = 5
+
 const PRINT_COLLIDERS_INFO = false
 
-enum GameStages {MENU, GENERATING, TESTING, TESTED, PLACING, END}
+enum GameStages {MENU, START, GENERATING, TESTING, TESTED, DICE_ANIMATION,  PLACING, END, END_MENU}
 
 var gameStage = GameStages.MENU
 
@@ -32,7 +34,7 @@ var debuggingGrid = []
 var squareObjectList = []
 enum squareSides {UPPER,RIGHT,LOWER,LEFT}
 #var isItTheEnd = false
-
+var beforeEndSecondsSpent = 0
 var gameTime=0
 
 func _ready():
@@ -55,20 +57,55 @@ func init_array(array, just_zero):
 	return array
 	
 func _on_StartGameButton_button_up():
-	get_node("StartGameButton").hide()
-	get_node("grayBackroundRect").hide()
+	gameStage = GameStages.START
+	print("GameStage = ", gameStage)
+	
+	$startMenu.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 	
-	cursorSquare = load("res://Scenes/SquareCursor.tscn").instance()
-	cursorSquare.modulate = COLOR_TEAM_ONE #TODO: изменить, возможно
-	add_child(cursorSquare)
-	
+	cursorSquare = $SquareCursor
+	cursorSquare.modulate = get_players_color(whoPlays)
+	#add_child(cursorSquare)
+	hideCursorSquare = false
 	cursorSquare.hide()
 	#TODO: сделать это действие по анимации рандома
 	generate_new_square()
+
+func _on_endPlayAgain_button_up():
+	$endMenu.hide()
+	gameStage = GameStages.START
+	print("GameStage = ", gameStage)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
+	
+	cursorSquare.modulate = get_players_color(whoPlays)
+	
+	cursorSquare.hide()
+	for child in get_PlayerSquares_node(0).get_children():
+		child.free()
+		pass
+	for child in get_PlayerSquares_node(1).get_children():
+		child.free()
+		pass
+
+	currentSquareToPlace.free()
+	
+	init_array(gridSystem.grid, 1)
+	howManySquaresColliding = 0
+	collidingPlayersStartPoint = 0
+	bordersCollidingWithPlayer.player1 = 0
+	bordersCollidingWithPlayer.player2 = 0
+	
+	beforeEndSecondsSpent = 0
+	$beforeEndLabel.hide()
+	
+	#TODO: сделать это действие по анимации рандома
+	generate_new_square()
+	
+	pass
 	
 func _input(event):
-	if gameStage != GameStages.MENU:
+	if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU:
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT and not event.pressed:
 				_on_left_button_click()
@@ -80,33 +117,39 @@ func _input(event):
 			lastMousePosition = event.position
 			move_cursor(event.position)	
 		elif event is InputEventKey:
-			#if event.scancode == KEY_D:
-				#debugfunc()
+			if event.scancode == KEY_D:
+				debugfunc()
 			pass
 func debugfunc():
-	var square = currentSquareToPlace.get_node("Area2DSquare/square")
-	var size_x = square.rect_size.x
-	var size_y = square.rect_size.y
-		
-	var width: int
-	var height: int
-	
-	width = (size_x - 4)/(56 - 4)
-	height = (size_y - 4)/(56 - 4)
-	
-	testingForEnd(width, height)
+	$beforeEndTimer.start()
+	#showEndMenu()
 	pass
 func _on_left_button_click():
+	#need to check is it the end or not
 	if not placingRules():
 		showErrorOnPlacing()
 		return
 	else:
 		 place_squareToPlace()
+
+func beforeEndInit():
+	$beforeEndLabel.show()
+	$beforeEndLabel.text = BEFORE_END_SECONDS as String
+
+	$beforeEndTimer.start()
 		
 func showEndMenu():
-	get_node("grayBackroundRect").show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 	hideCursorSquare = true
+	cursorSquare.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
+	change_team()
+	var a = $endMenu/whoWonLabel
+	$endMenu/whoWonLabel.set("custom_colors/font_color", get_players_color(whoPlays))
+	$endMenu/whoWonLabel.set("custom_colors/font_outline_modulate", get_players_color(whoPlays))
+	$endMenu/whoWonLabel.text = "Player " + (whoPlays+1)as String + " won!" 
+	change_team()
+	$endMenu.show()
+
 	pass
 		
 func placingRules():
@@ -158,14 +201,23 @@ func move_cursor(position):
 		currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
 	else:
 		cursorSquare.hide()
+	if gameStage == GameStages.END:
+		$beforeEndLabel.rect_position = position + Vector2(52/2+8, 52/2)
+		pass
 		
 func start_dice_animation_orSmth():
-	print("GameStage = ", "dice animation")
-	hideCursorSquare = true
-	
-	pass #animation things
-	
-	hideCursorSquare = false
+	if gameStage != GameStages.END:
+		gameStage = GameStages.DICE_ANIMATION
+		print("GameStage = ", gameStage)
+		hideCursorSquare = true
+		
+		pass #animation things
+		
+		hideCursorSquare = false
+	else:
+		beforeEndInit()
+		pass #animation things
+		pass
 	
 func generate_new_square():
 	var w = randi()%6 + 1
@@ -262,7 +314,7 @@ func change_team():
 	if whoPlays == 0:
 		cursorSquare.modulate = COLOR_TEAM_TWO
 		whoPlays = 1
-	else:
+	elif whoPlays == 1:
 		cursorSquare.modulate = COLOR_TEAM_ONE
 		whoPlays = 0
 	print("Team changed. Now playing: Player "+(whoPlays+1)as String)
@@ -316,8 +368,14 @@ func get_square(width, height):
 func get_PlayerSquares_node(team):
 	if team == 0:
 		return get_node("PlayerSquares").get_node("PlayerSquares1")
-	else:
+	elif team == 1:
 		return get_node("PlayerSquares").get_node("PlayerSquares2")
+
+func get_players_color(team):
+	if team == 0:
+		return COLOR_TEAM_ONE
+	elif team == 1:
+		return COLOR_TEAM_TWO
 
 func testingForEndInit(width, height):
 	
@@ -329,7 +387,7 @@ func testingForEndInit(width, height):
 
 	if area1ChildCount == 0 or area2ChildCount == 0:
 		gameStage = GameStages.TESTED
-		print("GameStage =", gameStage)
+		print("GameStage = ", gameStage)
 		get_node("PlayerSquares").add_child(currentSquareToPlace)
 		currentSquareToPlace.rect_position = lastMousePosition
 		rotationFixVector = Vector2(0,0)
@@ -342,8 +400,14 @@ func testingForEndInit(width, height):
 		start_dice_animation_orSmth()
 	else:
 		gameStage = GameStages.END
-		print("GameStage =", gameStage)
-		showEndMenu()
+		print("GameStage = ", gameStage)
+		
+		get_node("PlayerSquares").add_child(currentSquareToPlace)
+		currentSquareToPlace.rect_position = lastMousePosition
+		rotationFixVector = Vector2(0,0)
+				
+		start_dice_animation_orSmth()
+
 	
 func testingForEnd(width, height):
 	
@@ -525,7 +589,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 	var string = ""
 	for xy in range(20):
 		string += debuggingGrid[xy] as String + "\n"
-	$debuggingText.text = string
+	$"debuggingThings/debuggingText".text = string
 	return false
 func _on_square_area_entered(another_area):
 	var name_of_area = another_area.get_name()
@@ -610,3 +674,16 @@ func _on_errorTimer_timeout():
 		cursorSquare.modulate = COLOR_TEAM_ONE
 	else:
 		cursorSquare.modulate = COLOR_TEAM_TWO
+
+func _on_beforeEndTimer_timeout():
+	if beforeEndSecondsSpent != BEFORE_END_SECONDS-1:
+		beforeEndSecondsSpent+=1
+		$beforeEndLabel.text = (BEFORE_END_SECONDS - beforeEndSecondsSpent) as String
+		$beforeEndTimer.start()
+	else:
+		$beforeEndLabel.hide()
+		gameStage = GameStages.END_MENU
+		print("GameStage = ", gameStage)
+		showEndMenu()
+		pass
+	pass # Replace with function body.

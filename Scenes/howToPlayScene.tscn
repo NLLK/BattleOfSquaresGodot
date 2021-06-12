@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/HowToMenu/background.png" type="Texture" id=1]
-[ext_resource path="res://src/TTSquares-Thin.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/Styles/mainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Scripts/HowToPlay/howToPlay_script.gd" type="Script" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 60
-font_data = ExtResource( 2 )
 
 [node name="howToPlayParent" type="Node2D"]
 
@@ -25,12 +20,12 @@ __meta__ = {
 [node name="Label" type="Label" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 765.0
-margin_top = 150.0
-margin_right = -765.0
-margin_bottom = -861.0
+margin_left = 795.0
+margin_top = 155.0
+margin_right = -797.0
+margin_bottom = -856.0
+size_flags_horizontal = 4
 theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
 text = "How to play?"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -49,7 +44,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="BackToMenuButton" type="Button" parent="."]
 margin_left = 685.0
 margin_top = 840.0
 margin_right = 1237.0
@@ -62,4 +57,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_up" from="Button" to="Button" method="_on_Button_button_up"]
+[connection signal="button_up" from="BackToMenuButton" to="BackToMenuButton" method="_on_BackToMenuButton_button_up"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Styles/mainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Game/gameMain_script.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Menu/menu_script.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/HowToPlay/howToPlay_script.gd" type="Script" id=3]
 [ext_resource path="res://src/TTSquares-Thin.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/SquareCursor.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -17,10 +18,19 @@ corner_detail = 1
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 24 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 80
+outline_size = 1
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 17
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
@@ -28,8 +38,11 @@ light_mask = 0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0, 1062.0, 1062.0 ],
-"_edit_vertical_guides_": [ 320.0, 1364.0, 1364.0 ]
+"_edit_vertical_guides_": [ 320.0, 1364.0, 1364.0, 960.0 ]
 }
+
+[node name="beforeEndTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="errorTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -5750,7 +5763,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="grayBackroundRect" type="ColorRect" parent="."]
+[node name="startMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grayBackroundRect" type="ColorRect" parent="startMenu"]
 modulate = Color( 0, 0, 0, 0.596078 )
 margin_right = 1920.0
 margin_bottom = 1080.0
@@ -5758,22 +5778,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartGameButton" type="Button" parent="."]
-margin_left = 684.0
-margin_top = 490.0
-margin_right = 1236.0
-margin_bottom = 590.0
+[node name="endPanel2" type="Panel" parent="startMenu"]
+margin_left = 629.0
+margin_top = 46.0
+margin_right = 1292.0
+margin_bottom = 1012.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gameModeLabel" type="Label" parent="startMenu"]
+margin_left = 700.0
+margin_top = 82.0
+margin_right = 1226.0
+margin_bottom = 174.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Classic game
+mode"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="startMenuButtons" type="VBoxContainer" parent="startMenu"]
+margin_left = 685.0
+margin_top = 666.0
+margin_right = 1237.0
+margin_bottom = 904.0
+custom_constants/separation = 38
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGameButton" type="Button" parent="startMenu/startMenuButtons"]
+margin_right = 552.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 552, 100 )
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
 text = "Start game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenuButton" type="Button" parent="startMenu/startMenuButtons"]
+margin_top = 138.0
+margin_right = 552.0
+margin_bottom = 238.0
+rect_min_size = Vector2( 552, 100 )
+theme = ExtResource( 1 )
+text = "Back to main menu"
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="debuggingText" type="RichTextLabel" parent="."]
+[node name="debuggingThings" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="debuggingText" type="RichTextLabel" parent="debuggingThings"]
+visible = false
 margin_left = 1365.0
 margin_top = 19.0
 margin_right = 1918.0
@@ -5787,7 +5859,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="debuggingThings"]
 visible = false
 margin_left = 298.0
 margin_top = 34.0
@@ -5820,11 +5892,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="debuggingThings"]
 visible = false
 margin_left = 341.0
 margin_top = 6.0
-margin_right = 677.0
+margin_right = 1349.0
 margin_bottom = 206.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = 10
@@ -5833,6 +5905,99 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="endMenu" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="endMenuBackground" type="ColorRect" parent="endMenu"]
+modulate = Color( 0, 0, 0, 0.596078 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="endPanel" type="Panel" parent="endMenu"]
+margin_left = 629.0
+margin_top = 46.0
+margin_right = 1292.0
+margin_bottom = 1012.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="whoWonLabel" type="Label" parent="endMenu"]
+margin_left = 700.0
+margin_top = 82.0
+margin_right = 1226.0
+margin_bottom = 174.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.2, 0.6, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0.2, 0.6, 1 )
+text = "Player 1 won!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="endMenuButtons" type="VBoxContainer" parent="endMenu"]
+margin_left = 685.0
+margin_top = 666.0
+margin_right = 1237.0
+margin_bottom = 904.0
+custom_constants/separation = 38
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="endPlayAgain" type="Button" parent="endMenu/endMenuButtons"]
+margin_right = 552.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 552, 100 )
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenuButton" type="Button" parent="endMenu/endMenuButtons"]
+margin_top = 138.0
+margin_right = 552.0
+margin_bottom = 238.0
+rect_min_size = Vector2( 552, 100 )
+theme = ExtResource( 1 )
+text = "Back to main menu"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SquareCursor" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="beforeEndLabel" type="Label" parent="."]
+margin_left = 1882.0
+margin_top = 1017.0
+margin_right = 1920.0
+margin_bottom = 1075.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="beforeEndTimer" to="." method="_on_beforeEndTimer_timeout"]
 [connection signal="timeout" from="errorTimer" to="." method="_on_errorTimer_timeout"]
 [connection signal="area_entered" from="background" to="." method="_on_background_area_entered"]
 [connection signal="area_exited" from="background" to="." method="_on_background_area_exited"]
@@ -5840,4 +6005,7 @@ __meta__ = {
 [connection signal="area_exited" from="background/startPoints/playerOneStartPoints" to="." method="_on_playerOneStartPoints_area_exited"]
 [connection signal="area_entered" from="background/startPoints/playerTwoStartPoints" to="." method="_on_playerTwoStartPoints_area_entered"]
 [connection signal="area_exited" from="background/startPoints/playerTwoStartPoints" to="." method="_on_playerTwoStartPoints_area_exited"]
-[connection signal="button_up" from="StartGameButton" to="." method="_on_StartGameButton_button_up"]
+[connection signal="button_up" from="startMenu/startMenuButtons/StartGameButton" to="." method="_on_StartGameButton_button_up"]
+[connection signal="button_up" from="startMenu/startMenuButtons/BackToMenuButton" to="startMenu/startMenuButtons/BackToMenuButton" method="_on_BackToMenuButton_button_up"]
+[connection signal="button_up" from="endMenu/endMenuButtons/endPlayAgain" to="." method="_on_endPlayAgain_button_up"]
+[connection signal="button_up" from="endMenu/endMenuButtons/BackToMenuButton" to="endMenu/endMenuButtons/BackToMenuButton" method="_on_BackToMenuButton_button_up"]
