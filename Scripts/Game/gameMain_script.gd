@@ -44,7 +44,7 @@ func _ready():
 	
 func init_array(array, just_zero):
 	if (just_zero == 0):
-		for x in range(20):
+		for _x in range(20):
 			var col = []
 			col.resize(20)
 			array.append(col)
@@ -71,7 +71,7 @@ func _input(event):
 	if gameStage != GameStages.MENU:
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT and not event.pressed:
-				_on_left_button_click(event.position)
+				_on_left_button_click()
 			if event.button_index == BUTTON_WHEEL_UP and event.pressed:
 				rotate_square(currentSquareToPlace, -90)
 			if event.button_index == BUTTON_WHEEL_DOWN and event.pressed:
@@ -80,8 +80,8 @@ func _input(event):
 			lastMousePosition = event.position
 			move_cursor(event.position)	
 		elif event is InputEventKey:
-			if event.scancode == KEY_D:
-				debugfunc()
+			#if event.scancode == KEY_D:
+				#debugfunc()
 			pass
 func debugfunc():
 	var square = currentSquareToPlace.get_node("Area2DSquare/square")
@@ -96,7 +96,7 @@ func debugfunc():
 	
 	testingForEnd(width, height)
 	pass
-func _on_left_button_click(mouse_position):
+func _on_left_button_click():
 	if not placingRules():
 		showErrorOnPlacing()
 		return
@@ -112,7 +112,7 @@ func showEndMenu():
 func placingRules():
 	var answer: bool
 	answer = true
-	var area1 = get_PlayerSquares_node(0)#TODO: сделать единичную инициализацию
+	var area1 = get_PlayerSquares_node(0)
 	var area2 = get_PlayerSquares_node(1)
 	
 	var area1ChildCount = area1.get_child_count()
@@ -145,9 +145,10 @@ func showErrorOnPlacing():
 	currentSquareToPlace.modulate = COLOR_ERROR
 
 func move_cursor(position):
+	position-=Vector2(52, 52)
 	if hideCursorSquare == false:
 		cursorSquare.show()
-		cursorSquare.rect_position = position
+		cursorSquare.rect_position = position + Vector2(52/2, 52/2)
 		
 		var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
 		var y_pos = stepify(position.y+18, 52)+18
@@ -326,9 +327,6 @@ func testingForEndInit(width, height):
 	var area1ChildCount = get_PlayerSquares_node(0).get_child_count()
 	var area2ChildCount = get_PlayerSquares_node(1).get_child_count()
 
-#	for x in range(20):
-#		print(gridSystem.grid[x])
-		
 	if area1ChildCount == 0 or area2ChildCount == 0:
 		gameStage = GameStages.TESTED
 		print("GameStage =", gameStage)
@@ -359,7 +357,7 @@ func testingForEnd(width, height):
 			continue
 		var bordersP1 = Vector2(-1,-1)
 		var bordersP2 = Vector2(1,1)
-		#возможно тут проблема будет, потому что p1 тоже может быть в 19,19
+		
 		#for upper left corner and borders at all
 		if square.p1.x == 0:
 			bordersP1.x = 0
@@ -435,8 +433,6 @@ func testingForEnd(width, height):
 				pass
 		pass
 		
-#	for xy in range(20):
-#		print(debuggingGrid[xy], " . " ,gridSystem.grid[xy])
 	return true
 	
 func testingForEndCheckPlace(x,y,width,height,side):
@@ -445,7 +441,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 	var isBreak
 	var temp_width
 	var temp_height
-	#где-то выходит за -1
+	
 	for rotate in [0,1]:
 		if width == height and rotate==0:
 			continue
@@ -458,7 +454,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 			temp_height = width
 		match side:
 			squareSides.UPPER:
-				if x+temp_width >19 or y-temp_height <-1:
+				if x+temp_width >20 or y-temp_height +1 <0:
 					isBreak = true
 					continue
 				for j in range(y-temp_height+1, y+1):
@@ -503,10 +499,10 @@ func testingForEndCheckPlace(x,y,width,height,side):
 					pass
 				pass
 			squareSides.LEFT:
-				if x-temp_width <-1 or y-temp_height <-1:
+				if x-temp_width+1 <0 or y-temp_height+1 <0:
 					isBreak = true
 					continue
-				for j in range(y-temp_height+1, y+1): #TODO: mb we need +1 here
+				for j in range(y-temp_height+1, y+1):
 					for i in range(x-temp_width+1, x+1):
 						debuggingGrid[j][i] = whoPlays+1
 						if grid[j][i] != 0:
@@ -520,10 +516,10 @@ func testingForEndCheckPlace(x,y,width,height,side):
 		if isBreak:
 			continue
 		else:
-			var string = ""
-			for xy in range(20):
-				string += debuggingGrid[xy] as String + "\n"
-			$debuggingText.text = string
+#			var string = ""
+#			for xy in range(20):
+#				string += debuggingGrid[xy] as String + "\n"
+#			$debuggingText.text = string
 			return true
 		pass
 	var string = ""
@@ -531,129 +527,6 @@ func testingForEndCheckPlace(x,y,width,height,side):
 		string += debuggingGrid[xy] as String + "\n"
 	$debuggingText.text = string
 	return false
-
-#func testingForEnd(width, height):
-#
-#	debuggingGrid = init_array(debuggingGrid)
-#	var answer = true
-#	var grid = gridSystem.grid
-#
-#	var minSize = width
-#	var maxSize = width
-#
-#	if width > height:
-#		maxSize = width
-#		minSize = height
-#	elif width < height:
-#		maxSize = height
-#		minSize = width
-#	for y in range(1, 19):
-#		for x in range(1, 19):
-#			#если в y,x уже есть нужный цвет, то зачем еще что-то искать?
-#			for j in [-1,0,1]:
-#				for i in [-1,0,1]:
-#					if grid[y+j][x+i] == 0:
-#						continue
-#						pass
-#					if grid[y+j][x+i] == (whoPlays+1):
-#
-#						var found = Vector2(x+i,y+j)
-#
-#						var incI = 0
-#						var incJ = 0
-#
-#						var rightBorderI = 1
-#						var rightBorderJ = 1
-#
-#						if (found.x == 0):
-#							 incI+=1
-#						if (found.y == 0): 
-#							incJ+=1
-#						if (found.x + 1 > 19): 
-#							rightBorderI = 0
-#						if (found.y + 1> 19): 
-#							rightBorderJ = 0
-#
-#						for j1 in [-1 + incJ, 0, rightBorderJ]:
-#							for i1 in [-1 + incI, 0, rightBorderI]:
-#								if grid[found.y+j1][found.x+i1] == 0:
-#									debuggingGrid[found.y+j1][found.x+i1] = whoPlays+1
-#									var fittable = testingForEndCheckPlace(found.x+i1, found.y+j1, width, height)
-#									if fittable == true:
-#										print("Can place square ",width,":",height," at ",found.y+j1,",", found.x+i1)
-#										#for xy in range(20):
-#											#print(debuggingGrid[xy], " . " ,gridSystem.grid[xy])
-#										var string = ""
-#										for xy in range(20):
-#											string += debuggingGrid[xy] as String + "\n"
-#										$debuggingText.text = string
-#
-#										answer = false
-#										return answer
-#										pass
-#									pass
-#								pass
-#							pass
-#						pass
-#					pass
-#				pass
-#
-#			pass
-#		pass
-#	#оно вообще не определяет, что конец
-#	print("a\n")
-#	for xy in range(20):
-#		print(debuggingGrid[xy], " . " ,gridSystem.grid[xy])
-#	return answer
-#
-#func testingForEndCheckPlace(x,y,width,height):
-#	var grid = gridSystem.grid
-#
-#	for rotated in [0,1,2,3]:
-#		var isBreak = false
-#		#если стороны одинаковые - скип
-#		var temp_width = width
-#		var temp_height = height
-#
-#		if rotated == 1 or rotated == 3:
-#			temp_width = height
-#			temp_height = width
-#		match rotated:
-#			0,1:
-#				if x+temp_width > 20 or y+temp_height > 20:
-#					continue
-#				for j in range(temp_height):
-#					for i in range(temp_width):
-#						debuggingGrid[y+j][x+i] = (whoPlays+1)*3
-#						if (grid[y+j][x+i] !=0):
-#							isBreak = true
-#							break
-#						pass	
-#					if isBreak == true:
-#						break
-#					pass
-#			2,3:
-#				if whoPlays == 0:
-#					 return false
-#				if x-temp_width < -1 or y-temp_height < -1:
-#					continue
-#				for j in range(temp_height):
-#					for i in range(temp_width):
-#						debuggingGrid[y-j][x-i] = (whoPlays+1)*3
-#						if (grid[y-j][x-i] !=0):
-#							isBreak = true
-#							break
-#						pass	
-#					if isBreak == true:
-#						break
-#					pass
-#		if isBreak == true:
-#			continue
-#		else:
-#			return true
-#		pass
-#	return false
-	
 func _on_square_area_entered(another_area):
 	var name_of_area = another_area.get_name()
 
@@ -684,33 +557,28 @@ func _on_background_area_exited(another_area):
 			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " leaves background")	
 	
 func _on_borderPlayer1_area_entered(another_area):
-	var a = another_area.get_name()
 	if another_area.get_name() == "Area2DforBordersPlayerOne":
 		bordersCollidingWithPlayer.player1 += 1
 		if PRINT_COLLIDERS_INFO:
 			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " enters borderPlayer1_area")	
-		#print(bordersCollidingWithPlayer)
 	
 func _on_borderPlayer1_area_exited(another_area):
 	if another_area.get_name() == "Area2DforBordersPlayerOne":
 		bordersCollidingWithPlayer.player1 -= 1
 		if PRINT_COLLIDERS_INFO:
 			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " leaves borderPlayer1_area")	
-		#print(bordersCollidingWithPlayer)
 
 func _on_borderPlayer2_area_entered(another_area):
 	if another_area.get_name() == "Area2DforBordersPlayerTwo":
 		bordersCollidingWithPlayer.player2 += 1
 		if PRINT_COLLIDERS_INFO:
 			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " enters borderPlayer2_area")	
-		#print(bordersCollidingWithPlayer)
 
 func _on_borderPlayer2_area_exited(another_area):
 	if another_area.get_name() == "Area2DforBordersPlayerTwo":
 		bordersCollidingWithPlayer.player2 -= 1
 		if PRINT_COLLIDERS_INFO:
 			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " leaves borderPlayer2_area")	
-		#print(bordersCollidingWithPlayer)
 		
 func _on_playerOneStartPoints_area_entered(another_area):
 	if another_area.get_name() == "Area2DSquare":
@@ -742,72 +610,3 @@ func _on_errorTimer_timeout():
 		cursorSquare.modulate = COLOR_TEAM_ONE
 	else:
 		cursorSquare.modulate = COLOR_TEAM_TWO
-
-	
-	
-#	for y in range(0, 20-minSize):
-#		for x in range(0,20-maxSize):
-#			if (x==0 and y==0) or (x == 19 and y==19):
-#				continue
-#			if grid[y][x] != 0:
-#				continue
-#
-#			for rotated in range(0,1):		
-#				var isBreak = false
-#
-#				var temp_width = width
-#				var temp_height = height
-#
-#				if rotated == 1:
-#					temp_width = height
-#					temp_height = width
-#
-#				if x+temp_width > 19 or y+temp_height > 19:
-#					continue
-#				for j in range(temp_height):
-#					for i in range(temp_width):
-#						if (grid[y+j][x+i] !=0):
-#							isBreak = true
-#							break
-#						else:
-#							debuggingGrid[y+j][x+i]=3
-#						pass	
-#					if isBreak == true:
-#						break
-#					pass
-#
-#				if isBreak == true:
-#					answer = true
-#					continue
-#				else:
-#					var incI = 0
-#					var incJ = 0
-#					if (x == 0):
-#						incI+=1
-#					if (y == 0):
-#						incJ+=1
-#					if (x + temp_width > 19):
-#						temp_width-=1
-#					if (y + temp_height > 19):
-#						temp_height-=1
-#					#все же надо маску, или что. Не хочет для второго куба считать
-#					for j in range(y-1+incJ, y+temp_height+1):
-#						for i in range(x-1+incI, x+temp_width+1):
-#							debuggingGrid[j][i] = 4
-#							if (grid[j][i] == whoPlays+1):
-#								answer = false
-#
-#								for xy in range(20):
-#									print(debuggingGrid[xy], " . " ,gridSystem.grid[xy])
-#
-#								return answer
-#							pass
-#						pass
-#					pass
-#				pass
-#			pass
-#		pass
-#	print("a\n")
-#	for xy in range(20):
-#		print(debuggingGrid[xy]+gridSystem.grid[xy])
-#	return answer
