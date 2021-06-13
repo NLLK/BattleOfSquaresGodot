@@ -1,21 +1,20 @@
 extends Node
 
-const COLOR_TEAM_ONE = Color("6699ff")
-const COLOR_TEAM_TWO = Color("ff3399")
-const COLOR_ERROR = Color("ff0000")
+export(Color) var COLOR_TEAM_ONE = Color("6699ff")
+export(Color) var COLOR_TEAM_TWO = Color("ff3399")
+export(Color) var COLOR_ERROR = Color("ff0000")
 const COLOR_CLEAR = Color("ffffff")
-const FIELD_BORDERS = Vector2(1360,1058)
-const FIELD_START_POINT = Vector2(320,18)
+export(Vector2) var FIELD_BORDERS = Vector2(1360,1058)
+export(Vector2) var FIELD_START_POINT = Vector2(320,18)
 
-const BEFORE_END_SECONDS = 3
+export(int) var BEFORE_END_SECONDS = 3
 
-const PRINT_COLLIDERS_INFO = false
+export(bool) var  PRINT_COLLIDERS_INFO = false
 
 enum GameStages {MENU, START, GENERATING, TESTING, TESTED, DICE_ANIMATION, PLACING, END, PAUSE, END_MENU}
 
 var gameStage = GameStages.MENU
 
-var hideCursorSquare = true #TODO: rudiment. Need to remove
 var cursorSquare #square for cursor
 var currentSquareToPlace #that square that player control rn and want to place
 var whoPlays = 0 #defines the team who plays
@@ -40,7 +39,7 @@ var gameTime=0
 
 func _ready():
 	print("GameStage = ", gameStage)
-	
+	$endMenu.modulate = Color("00ffffff")
 	gridSystem.grid = init_array(gridSystem.grid, 0)
 	init_array(debuggingGrid, 0)
 	randomize()
@@ -67,7 +66,6 @@ func _on_StartGameButton_button_up():
 	cursorSquare = $SquareCursor
 	cursorSquare.modulate = get_players_color(whoPlays)
 	#add_child(cursorSquare)
-	hideCursorSquare = false
 	cursorSquare.hide()
 	#TODO: сделать это действие по анимации рандома
 	generate_new_square()
@@ -128,7 +126,13 @@ func _input(event):
 		if event.scancode == KEY_ESCAPE and event.pressed:
 			_on_pauseButton_button_up()
 func debugfunc():
-	$beforeEndTimer.start()
+	
+	var square = currentSquareToPlace.get_node("Area2DSquare/square")
+		
+	var width = (square.rect_size.x - 4)/(56 - 4)
+	var height = (square.rect_size.y - 4)/(56 - 4)
+	
+	testingForEnd(width, height)
 	#showEndMenu()
 	pass
 func _on_left_button_click():
@@ -140,6 +144,7 @@ func _on_left_button_click():
 			 place_squareToPlace()
 
 func beforeEndInit():
+	
 	#$beforeEndLabel.show()
 	#$beforeEndLabel.text = BEFORE_END_SECONDS as String
 
@@ -147,7 +152,6 @@ func beforeEndInit():
 		
 func showEndMenu():
 
-	hideCursorSquare = true
 	cursorSquare.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 	change_team()
@@ -214,44 +218,38 @@ func move_cursor(position):
 	
 	var pos_x = stepify(position.x-FIELD_START_POINT.x, 52)/52
 	var pos_y = stepify(position.y-FIELD_START_POINT.y, 52)/52
-	
-	if (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 19-height):
+		
+	if (pos_x < 0 or pos_y < 0 or pos_x > 19 or pos_y > 19):
 		isOutsideOfField = true
-	
-	if isOutsideOfField:
-		hideCursorSquare = true
 		cursorSquare.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 		pass
 	else:
-		hideCursorSquare = false
+		isOutsideOfField = false
+		cursorSquare.rect_position = position + Vector2(52/2, 52/2)
+		cursorSquare.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	if gameStage != GameStages.PAUSE and not isOutsideOfField:	
-		if hideCursorSquare == false:
-			cursorSquare.show()
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-			cursorSquare.rect_position = position + Vector2(52/2, 52/2)
-			
-			var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
-			var y_pos = stepify(position.y+FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
-			var currentSquarePos = Vector2(x_pos, y_pos)
-			
-			currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
-		else:
-			cursorSquare.hide()
-		if gameStage == GameStages.END:
-			#$beforeEndLabel.rect_position = position + Vector2(52/2+8, 52/2)
-			pass
-		
+	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 19-height):		
+		if gameStage != GameStages.PAUSE and not isOutsideOfField:	
+			if cursorSquare.visible == true:
+				var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
+				var y_pos = stepify(position.y+FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
+				var currentSquarePos = Vector2(x_pos, y_pos)
+				
+				currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
+			else:
+				pass
+	
 func start_dice_animation_orSmth():
 	if gameStage != GameStages.END:
 		gameStage = GameStages.DICE_ANIMATION
 		print("GameStage = ", gameStage)
-		hideCursorSquare = true
+		cursorSquare.hide()
 		
 		pass #animation things
 		
-		hideCursorSquare = false
+		cursorSquare.show()
 	else:
 		beforeEndInit()
 		pass #animation things
@@ -276,41 +274,24 @@ func place_squareToPlace():
 	currentSquareToPlace.modulate = COLOR_CLEAR
 	
 	var square = currentSquareToPlace.get_node("Area2DSquare/square")
-	
-	var size_x = square.rect_size.x
-	var size_y = square.rect_size.y
-	
-	var pos_x: int
-	var pos_y: int
-	pos_x = (currentSquareToPlace.rect_position.x-FIELD_START_POINT.x)/52
-	pos_y = (currentSquareToPlace.rect_position.y-FIELD_START_POINT.y)/52
-	
-	var width: int
-	var height: int
-	
-	width = (size_x - 4)/(56 - 4)
-	height = (size_y - 4)/(56 - 4)
-
-	if currentSquareToPlace.rect_rotation as int != 0:	
-		if rotationFixVector.x !=0 and rotationFixVector.y !=0:
-			pos_x -= width
-			pos_y -= height
-		elif rotationFixVector.x !=0:
-			pos_x -= height
-		elif rotationFixVector.y !=0:
-			pos_y -= width
 		
-		match currentSquareToPlace.rect_rotation as int:
-			90,-90, 270, -270:
-				var temp = width
-				width = height
-				height = temp
-			_:
-				pass
-				
+	var width = (square.rect_size.x - 4)/(56 - 4)
+	var height = (square.rect_size.y - 4)/(56 - 4)
+	
+	var pos_x = (currentSquareToPlace.rect_position.x-FIELD_START_POINT.x-rotationFixVector.x)/52
+	var pos_y = (currentSquareToPlace.rect_position.y-FIELD_START_POINT.y-rotationFixVector.y)/52
+	
+	if currentSquareToPlace.rect_rotation as int == 90:
+		var temp = width
+		width = height
+		height = temp
+		
 	for y in range(pos_y, pos_y+height):
 		for x in range(pos_x, pos_x+width):
 			gridSystem.grid[y][x] = whoPlays+1
+	
+#	for xy in gridSystem.grid:
+#		print(xy)
 	
 	var squareObj = squareObject.new(Vector2(pos_x,pos_y), Vector2(pos_x+width-1,pos_y+height-1),whoPlays)
 	squareObjectList.append(squareObj)
@@ -337,24 +318,11 @@ func rotate_square(square, angle):
 	var height = (size_y - 4)/(56 - 4)
 	
 	var positionModification = Vector2(0,0)
-	if currentSquareToPlace.rect_rotation as int == 90:
-		positionModification = Vector2(height, 0)
-		pass
-
 	var rotation: int 
 	rotation = square.rect_rotation
-	match rotation:
-		-270, 90:
-			#x-=4
-			rotationFixVector.x = 4
-		-180, 180:
-			#y-=4, x-=4
-			rotationFixVector = Vector2(4,4)
-		-90, 270:
-			#y-=4
-			rotationFixVector.y = 4
-		_:
-			rotationFixVector = Vector2(0,0)
+	if rotation == 90:
+		rotationFixVector.x = 4
+		positionModification = Vector2(height, 0)
 			
 	rotationFixVector += positionModification*52
 	square.rect_position += rotationFixVector
@@ -746,7 +714,6 @@ func _on_pauseButton_button_up():
 			pausePreviousGameStage = gameStage
 			gameStage = GameStages.PAUSE
 			print("GameStage = ", gameStage)
-			hideCursorSquare = true
 			cursorSquare.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$pauseMenu.visible = true
@@ -757,7 +724,6 @@ func _on_pauseMenuContinue_button_up():
 	gameStage = pausePreviousGameStage
 	print("GameStage = ", gameStage)
 	$pauseMenu.hide()
-	hideCursorSquare = false
 	cursorSquare.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass # Replace with function body.
