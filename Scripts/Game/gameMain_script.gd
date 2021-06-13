@@ -7,7 +7,7 @@ const COLOR_CLEAR = Color("ffffff")
 const FIELD_BORDERS = Vector2(1360,1058)
 const FIELD_START_POINT = Vector2(320,18)
 
-const BEFORE_END_SECONDS = 5
+const BEFORE_END_SECONDS = 3
 
 const PRINT_COLLIDERS_INFO = false
 
@@ -74,6 +74,7 @@ func _on_StartGameButton_button_up():
 
 func _on_endPlayAgain_button_up():
 	$endMenu.hide()
+	$endMenu.modulate = Color("00ffffff")
 	gameStage = GameStages.START
 	print("GameStage = ", gameStage)
 	
@@ -100,7 +101,7 @@ func _on_endPlayAgain_button_up():
 	squareObjectList.clear()
 	
 	beforeEndSecondsSpent = 0
-	$beforeEndLabel.hide()
+	#$beforeEndLabel.hide()
 	
 	#TODO: сделать это действие по анимации рандома
 	generate_new_square()
@@ -139,12 +140,13 @@ func _on_left_button_click():
 			 place_squareToPlace()
 
 func beforeEndInit():
-	$beforeEndLabel.show()
-	$beforeEndLabel.text = BEFORE_END_SECONDS as String
+	#$beforeEndLabel.show()
+	#$beforeEndLabel.text = BEFORE_END_SECONDS as String
 
 	$beforeEndTimer.start()
 		
 func showEndMenu():
+
 	hideCursorSquare = true
 	cursorSquare.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
@@ -153,6 +155,9 @@ func showEndMenu():
 	$endMenu/whoWonLabel.set("custom_colors/font_outline_modulate", get_players_color(whoPlays))
 	$endMenu/whoWonLabel.text = "Player " + (whoPlays+1)as String + " won!" 
 	change_team()
+	$endMenu/Tween.interpolate_property($endMenu, "modulate", 
+	Color("00ffffff"), Color("ffffffff"), 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$endMenu/Tween.start()
 	$endMenu.show()
 
 	pass
@@ -235,7 +240,7 @@ func move_cursor(position):
 		else:
 			cursorSquare.hide()
 		if gameStage == GameStages.END:
-			$beforeEndLabel.rect_position = position + Vector2(52/2+8, 52/2)
+			#$beforeEndLabel.rect_position = position + Vector2(52/2+8, 52/2)
 			pass
 		
 func start_dice_animation_orSmth():
@@ -725,10 +730,10 @@ func _on_beforeEndTimer_timeout():
 		pass
 	elif beforeEndSecondsSpent != BEFORE_END_SECONDS-1:
 		beforeEndSecondsSpent+=1
-		$beforeEndLabel.text = (BEFORE_END_SECONDS - beforeEndSecondsSpent) as String
+		#$beforeEndLabel.text = (BEFORE_END_SECONDS - beforeEndSecondsSpent) as String
 		$beforeEndTimer.start()
 	else:
-		$beforeEndLabel.hide()
+		#$beforeEndLabel.hide()
 		gameStage = GameStages.END_MENU
 		print("GameStage = ", gameStage)
 		showEndMenu()
@@ -736,16 +741,17 @@ func _on_beforeEndTimer_timeout():
 	pass # Replace with function body.
 
 func _on_pauseButton_button_up():
-	if $pauseMenu.visible == false:
-		pausePreviousGameStage = gameStage
-		gameStage = GameStages.PAUSE
-		print("GameStage = ", gameStage)
-		hideCursorSquare = true
-		cursorSquare.hide()
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		$pauseMenu.visible = true
-	else:
-		_on_pauseMenuContinue_button_up()
+	if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU:
+		if $pauseMenu.visible == false:
+			pausePreviousGameStage = gameStage
+			gameStage = GameStages.PAUSE
+			print("GameStage = ", gameStage)
+			hideCursorSquare = true
+			cursorSquare.hide()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			$pauseMenu.visible = true
+		else:
+			_on_pauseMenuContinue_button_up()
 
 func _on_pauseMenuContinue_button_up():
 	gameStage = pausePreviousGameStage
@@ -758,7 +764,7 @@ func _on_pauseMenuContinue_button_up():
 
 func _on_pauseMenuSurrender_button_up():
 	$pauseMenu.hide()
-	$beforeEndLabel.hide()
+	#$beforeEndLabel.hide()
 	gameStage = GameStages.END_MENU
 	print("GameStage = ", gameStage)
 	showEndMenu()

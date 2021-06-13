@@ -5992,6 +5992,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tween" type="Tween" parent="endMenu"]
+
 [node name="pauseMenu" type="Control" parent="."]
 visible = false
 margin_right = 1920.0
@@ -6087,6 +6089,7 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="beforeEndLabel" type="Label" parent="."]
+visible = false
 margin_left = 1882.0
 margin_top = 1017.0
 margin_right = 1920.0
