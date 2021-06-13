@@ -12,7 +12,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -24,7 +24,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 60
 font_data = ExtResource( 2 )
 
@@ -247,7 +247,7 @@ OptionButton/styles/focus = null
 OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
-Panel/styles/panel = SubResource( 3 )
+Panel/styles/panel = SubResource( 2 )
 PanelContainer/styles/panel = null
 PopupDialog/styles/panel = null
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
@@ -289,7 +289,7 @@ RichTextLabel/fonts/bold_font = null
 RichTextLabel/fonts/bold_italics_font = null
 RichTextLabel/fonts/italics_font = null
 RichTextLabel/fonts/mono_font = null
-RichTextLabel/fonts/normal_font = SubResource( 2 )
+RichTextLabel/fonts/normal_font = SubResource( 3 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
 ScrollContainer/styles/bg = null

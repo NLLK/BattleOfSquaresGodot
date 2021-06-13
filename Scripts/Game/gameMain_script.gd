@@ -11,11 +11,11 @@ const BEFORE_END_SECONDS = 5
 
 const PRINT_COLLIDERS_INFO = false
 
-enum GameStages {MENU, START, GENERATING, TESTING, TESTED, DICE_ANIMATION,  PLACING, END, END_MENU}
+enum GameStages {MENU, START, GENERATING, TESTING, TESTED, DICE_ANIMATION, PLACING, END, PAUSE, END_MENU}
 
 var gameStage = GameStages.MENU
 
-var hideCursorSquare = true #defines do you need to show Square for Cursor or not 
+var hideCursorSquare = true #TODO: rudiment. Need to remove
 var cursorSquare #square for cursor
 var currentSquareToPlace #that square that player control rn and want to place
 var whoPlays = 0 #defines the team who plays
@@ -24,7 +24,7 @@ var lastMousePosition = Vector2(320,18)
 var howManySquaresColliding = 0
 var collidingPlayersStartPoint = 0
 var bordersCollidingWithPlayer = {"player1": 0, "player2": 0}
-
+var isOutsideOfField
 var rotationFixVector = Vector2(0,0)
 var gridSystem = {
 	"grid": []
@@ -35,6 +35,7 @@ var squareObjectList = []
 enum squareSides {UPPER,RIGHT,LOWER,LEFT}
 #var isItTheEnd = false
 var beforeEndSecondsSpent = 0
+var pausePreviousGameStage
 var gameTime=0
 
 func _ready():
@@ -96,6 +97,8 @@ func _on_endPlayAgain_button_up():
 	bordersCollidingWithPlayer.player1 = 0
 	bordersCollidingWithPlayer.player2 = 0
 	
+	squareObjectList.clear()
+	
 	beforeEndSecondsSpent = 0
 	$beforeEndLabel.hide()
 	
@@ -105,7 +108,7 @@ func _on_endPlayAgain_button_up():
 	pass
 	
 func _input(event):
-	if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU:
+	if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU and gameStage != GameStages.PAUSE:
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT and not event.pressed:
 				_on_left_button_click()
@@ -120,17 +123,20 @@ func _input(event):
 			if event.scancode == KEY_D:
 				debugfunc()
 			pass
+	if event is InputEventKey:
+		if event.scancode == KEY_ESCAPE and event.pressed:
+			_on_pauseButton_button_up()
 func debugfunc():
 	$beforeEndTimer.start()
 	#showEndMenu()
 	pass
 func _on_left_button_click():
-	#need to check is it the end or not
-	if not placingRules():
-		showErrorOnPlacing()
-		return
-	else:
-		 place_squareToPlace()
+	if !isOutsideOfField:
+		if not placingRules():
+			showErrorOnPlacing()
+			return
+		else:
+			 place_squareToPlace()
 
 func beforeEndInit():
 	$beforeEndLabel.show()
@@ -143,7 +149,6 @@ func showEndMenu():
 	cursorSquare.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 	change_team()
-	var a = $endMenu/whoWonLabel
 	$endMenu/whoWonLabel.set("custom_colors/font_color", get_players_color(whoPlays))
 	$endMenu/whoWonLabel.set("custom_colors/font_outline_modulate", get_players_color(whoPlays))
 	$endMenu/whoWonLabel.text = "Player " + (whoPlays+1)as String + " won!" 
@@ -189,21 +194,49 @@ func showErrorOnPlacing():
 
 func move_cursor(position):
 	position-=Vector2(52, 52)
-	if hideCursorSquare == false:
-		cursorSquare.show()
-		cursorSquare.rect_position = position + Vector2(52/2, 52/2)
-		
-		var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
-		var y_pos = stepify(position.y+18, 52)+18
+	isOutsideOfField = false
+
+	var square = currentSquareToPlace.get_node("Area2DSquare/square")
 	
-		var currentSquarePos = Vector2(x_pos, y_pos)
-		
-		currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
-	else:
-		cursorSquare.hide()
-	if gameStage == GameStages.END:
-		$beforeEndLabel.rect_position = position + Vector2(52/2+8, 52/2)
+	var width = (square.rect_size.x - 4)/(56 - 4)
+	var height = (square.rect_size.y - 4)/(56 - 4)
+	
+	if currentSquareToPlace.rect_rotation as int == 90:
+		var temp = width
+		width = height
+		height = temp
 		pass
+	
+	var pos_x = stepify(position.x-FIELD_START_POINT.x, 52)/52
+	var pos_y = stepify(position.y-FIELD_START_POINT.y, 52)/52
+	
+	if (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 19-height):
+		isOutsideOfField = true
+	
+	if isOutsideOfField:
+		hideCursorSquare = true
+		cursorSquare.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
+		pass
+	else:
+		hideCursorSquare = false
+	
+	if gameStage != GameStages.PAUSE and not isOutsideOfField:	
+		if hideCursorSquare == false:
+			cursorSquare.show()
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			cursorSquare.rect_position = position + Vector2(52/2, 52/2)
+			
+			var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
+			var y_pos = stepify(position.y+FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
+			var currentSquarePos = Vector2(x_pos, y_pos)
+			
+			currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
+		else:
+			cursorSquare.hide()
+		if gameStage == GameStages.END:
+			$beforeEndLabel.rect_position = position + Vector2(52/2+8, 52/2)
+			pass
 		
 func start_dice_animation_orSmth():
 	if gameStage != GameStages.END:
@@ -269,10 +302,10 @@ func place_squareToPlace():
 				height = temp
 			_:
 				pass
-
-	for x in range(pos_y, pos_y+height):
-		for y in range(pos_x, pos_x+width):
-			gridSystem.grid[x][y] = whoPlays+1
+				
+	for y in range(pos_y, pos_y+height):
+		for x in range(pos_x, pos_x+width):
+			gridSystem.grid[y][x] = whoPlays+1
 	
 	var squareObj = squareObject.new(Vector2(pos_x,pos_y), Vector2(pos_x+width-1,pos_y+height-1),whoPlays)
 	squareObjectList.append(squareObj)
@@ -290,8 +323,18 @@ func rotate_square(square, angle):
 	square.rect_position -= rotationFixVector
 	rotationFixVector = Vector2(0,0)
 	square.rect_rotation +=angle
-	if square.rect_rotation >=360 or square.rect_rotation <=-360:
+	if square.rect_rotation == 180:
 		square.rect_rotation = 0
+	if square.rect_rotation == -90:
+		square.rect_rotation = 90 
+		
+	var size_y = square.get_node("Area2DSquare/square").rect_size.y
+	var height = (size_y - 4)/(56 - 4)
+	
+	var positionModification = Vector2(0,0)
+	if currentSquareToPlace.rect_rotation as int == 90:
+		positionModification = Vector2(height, 0)
+		pass
 
 	var rotation: int 
 	rotation = square.rect_rotation
@@ -307,7 +350,8 @@ func rotate_square(square, angle):
 			rotationFixVector.y = 4
 		_:
 			rotationFixVector = Vector2(0,0)
-
+			
+	rotationFixVector += positionModification*52
 	square.rect_position += rotationFixVector
 
 func change_team():
@@ -408,7 +452,6 @@ func testingForEndInit(width, height):
 				
 		start_dice_animation_orSmth()
 
-	
 func testingForEnd(width, height):
 	
 	init_array(debuggingGrid, 1)
@@ -591,6 +634,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 		string += debuggingGrid[xy] as String + "\n"
 	$"debuggingThings/debuggingText".text = string
 	return false
+
 func _on_square_area_entered(another_area):
 	var name_of_area = another_area.get_name()
 
@@ -676,7 +720,10 @@ func _on_errorTimer_timeout():
 		cursorSquare.modulate = COLOR_TEAM_TWO
 
 func _on_beforeEndTimer_timeout():
-	if beforeEndSecondsSpent != BEFORE_END_SECONDS-1:
+	if gameStage == GameStages.PAUSE:
+		$beforeEndTimer.start()
+		pass
+	elif beforeEndSecondsSpent != BEFORE_END_SECONDS-1:
 		beforeEndSecondsSpent+=1
 		$beforeEndLabel.text = (BEFORE_END_SECONDS - beforeEndSecondsSpent) as String
 		$beforeEndTimer.start()
@@ -686,4 +733,33 @@ func _on_beforeEndTimer_timeout():
 		print("GameStage = ", gameStage)
 		showEndMenu()
 		pass
+	pass # Replace with function body.
+
+func _on_pauseButton_button_up():
+	if $pauseMenu.visible == false:
+		pausePreviousGameStage = gameStage
+		gameStage = GameStages.PAUSE
+		print("GameStage = ", gameStage)
+		hideCursorSquare = true
+		cursorSquare.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$pauseMenu.visible = true
+	else:
+		_on_pauseMenuContinue_button_up()
+
+func _on_pauseMenuContinue_button_up():
+	gameStage = pausePreviousGameStage
+	print("GameStage = ", gameStage)
+	$pauseMenu.hide()
+	hideCursorSquare = false
+	cursorSquare.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass # Replace with function body.
+
+func _on_pauseMenuSurrender_button_up():
+	$pauseMenu.hide()
+	$beforeEndLabel.hide()
+	gameStage = GameStages.END_MENU
+	print("GameStage = ", gameStage)
+	showEndMenu()
 	pass # Replace with function body.
