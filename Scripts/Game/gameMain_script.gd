@@ -8,8 +8,10 @@ export(Vector2) var FIELD_BORDERS = Vector2(1360,1058)
 export(Vector2) var FIELD_START_POINT = Vector2(320,18)
 
 export(int) var BEFORE_END_SECONDS = 3
+export(bool) var PRINT_COLLIDERS_INFO = false
+export(bool) var isMobile
+export(bool) var showCursorAnyWay
 
-export(bool) var  PRINT_COLLIDERS_INFO = false
 
 enum GameStages {MENU, START, GENERATING, TESTING, TESTED, DICE_ANIMATION, PLACING, END, PAUSE, END_MENU}
 
@@ -37,9 +39,22 @@ var beforeEndSecondsSpent = 0
 var pausePreviousGameStage
 var gameTime=0
 
+var mobileCursorPosition = FIELD_START_POINT #mb create separate object for it
+
 func _ready():
+	
+	if (OS.get_name() == "Android"):
+		isMobile = true
+		
+	if isMobile:
+		$CommonUI/SquareCursor.hide()
+		print("Is mobiiiile is it now or never")
+
+	$MobileUI/Main.hide()
+	
 	print("GameStage = ", gameStage)
-	$endMenu.modulate = Color("00ffffff")
+	$MobileUI/Main/Joystick.modulate = COLOR_TEAM_ONE
+	$CommonUI/endMenu.modulate = Color("00ffffff")
 	gridSystem.grid = init_array(gridSystem.grid, 0)
 	init_array(debuggingGrid, 0)
 	randomize()
@@ -60,25 +75,29 @@ func _on_StartGameButton_button_up():
 	gameStage = GameStages.START
 	print("GameStage = ", gameStage)
 	
-	$startMenu.hide()
+	$CommonUI/startMenu.hide()
+	if isMobile:
+		$MobileUI/Main.show()
+		$MobileUI/Main/Joystick.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 	
-	cursorSquare = $SquareCursor
-	cursorSquare.modulate = get_players_color(whoPlays)
-	#add_child(cursorSquare)
+	if showCursorAnyWay:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	cursorSquare = cursorSquareObject.new($CommonUI/SquareCursor,isMobile)
+	cursorSquare.modulate(get_players_color(whoPlays))
 	cursorSquare.hide()
 	#TODO: сделать это действие по анимации рандома
 	generate_new_square()
 
 func _on_endPlayAgain_button_up():
-	$endMenu.hide()
-	$endMenu.modulate = Color("00ffffff")
+	$CommonUI/endMenu.hide()
+	$CommonUI/endMenu.modulate = Color("00ffffff")
 	gameStage = GameStages.START
 	print("GameStage = ", gameStage)
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 	
-	cursorSquare.modulate = get_players_color(whoPlays)
+	cursorSquare.modulate(get_players_color(whoPlays))
 	
 	cursorSquare.hide()
 	for child in get_PlayerSquares_node(0).get_children():
@@ -99,32 +118,65 @@ func _on_endPlayAgain_button_up():
 	squareObjectList.clear()
 	
 	beforeEndSecondsSpent = 0
-	#$beforeEndLabel.hide()
 	
 	#TODO: сделать это действие по анимации рандома
 	generate_new_square()
 	
+	if isMobile:
+		$MobileUI/Main.show()
+		if whoPlays == 0:
+			mobileCursorPosition = FIELD_START_POINT
+		elif whoPlays == 1:
+			
+			var square = currentSquareToPlace.get_node("Area2DSquare/square")
+	
+			var width = (square.rect_size.x - 4)/(56 - 4)
+			var height = (square.rect_size.y - 4)/(56 - 4)
+			
+			var pos_x = (20-width)*52+FIELD_START_POINT.x
+			var pos_y = (20-height)*52+FIELD_START_POINT.y
+						
+			mobileCursorPosition = Vector2(pos_x, pos_y)
+			
+			mobile_move_cursor(Vector2(0,0))
+	
 	pass
 	
 func _input(event):
-	if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU and gameStage != GameStages.PAUSE:
-		if event is InputEventMouseButton:
-			if event.button_index == BUTTON_LEFT and not event.pressed:
-				_on_left_button_click()
-			if event.button_index == BUTTON_WHEEL_UP and event.pressed:
-				rotate_square(currentSquareToPlace, -90)
-			if event.button_index == BUTTON_WHEEL_DOWN and event.pressed:
-				rotate_square(currentSquareToPlace, 90)
-		elif event is InputEventMouseMotion:
-			lastMousePosition = event.position
-			move_cursor(event.position)	
-		elif event is InputEventKey:
+	if !isMobile:
+		if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU and gameStage != GameStages.PAUSE:
+			if event is InputEventMouseButton:
+				if event.button_index == BUTTON_LEFT and not event.pressed:
+					_on_left_button_click()
+				if event.button_index == BUTTON_WHEEL_UP and event.pressed:
+					rotate_square(currentSquareToPlace, -90)
+				if event.button_index == BUTTON_WHEEL_DOWN and event.pressed:
+					rotate_square(currentSquareToPlace, 90)
+			elif event is InputEventMouseMotion:
+				lastMousePosition = event.position
+				move_cursor(event.position)	
+			elif event is InputEventKey:
+				if event.scancode == KEY_D:
+					pass
+					#debugfunc()
+				#pass
+		if event is InputEventKey:
+			if event.scancode == KEY_ESCAPE and event.pressed:
+				_on_pauseButton_button_up()
 			if event.scancode == KEY_D:
 				debugfunc()
-			pass
-	if event is InputEventKey:
-		if event.scancode == KEY_ESCAPE and event.pressed:
-			_on_pauseButton_button_up()
+	else:
+		pass
+		
+func _physics_process(_delta):
+	if gameStage == GameStages.PLACING or gameStage == GameStages.END:
+		if isMobile:
+			var joystick = $MobileUI/Main/Joystick
+			if joystick.output != Vector2(0,0):
+				if $MobileUI/joystickDelayTimer.is_stopped():
+					$MobileUI/joystickDelayTimer.start()
+					mobile_move_cursor(joystick.output)
+				
 func debugfunc():
 	
 	var square = currentSquareToPlace.get_node("Area2DSquare/square")
@@ -144,26 +196,27 @@ func _on_left_button_click():
 			 place_squareToPlace()
 
 func beforeEndInit():
-	
-	#$beforeEndLabel.show()
-	#$beforeEndLabel.text = BEFORE_END_SECONDS as String
 
-	$beforeEndTimer.start()
+	$CommonUI/beforeEndTimer.start()
 		
 func showEndMenu():
 
 	cursorSquare.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 	change_team()
-	$endMenu/whoWonLabel.set("custom_colors/font_color", get_players_color(whoPlays))
-	$endMenu/whoWonLabel.set("custom_colors/font_outline_modulate", get_players_color(whoPlays))
-	$endMenu/whoWonLabel.text = "Player " + (whoPlays+1)as String + " won!" 
+	$CommonUI/endMenu/whoWonLabel.set("custom_colors/font_color", get_players_color(whoPlays))
+	$CommonUI/endMenu/whoWonLabel.set("custom_colors/font_outline_modulate", get_players_color(whoPlays))
+	$CommonUI/endMenu/whoWonLabel.text = "Player " + (whoPlays+1)as String + " won!" 
 	change_team()
-	$endMenu/Tween.interpolate_property($endMenu, "modulate", 
+	$CommonUI/endMenu/endMenuTween.interpolate_property($CommonUI/endMenu, "modulate", 
 	Color("00ffffff"), Color("ffffffff"), 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$endMenu/Tween.start()
-	$endMenu.show()
-
+	$CommonUI/endMenu/endMenuTween.start()
+	$CommonUI/endMenu.show()
+	
+	if isMobile:
+		$MobileUI/Main.hide()
+		pass
+	
 	pass
 		
 func placingRules():
@@ -197,8 +250,8 @@ func placingRules():
 	return answer
 	
 func showErrorOnPlacing():
-	$errorTimer.start()
-	cursorSquare.modulate = COLOR_ERROR
+	$CommonUI/errorTimer.start()
+	cursorSquare.modulate(COLOR_ERROR)
 	currentSquareToPlace.modulate = COLOR_ERROR
 
 func move_cursor(position):
@@ -226,20 +279,17 @@ func move_cursor(position):
 		pass
 	else:
 		isOutsideOfField = false
-		cursorSquare.rect_position = position + Vector2(52/2, 52/2)
+		cursorSquare.rect_position(position + Vector2(52/2, 52/2))
 		cursorSquare.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 19-height):		
+	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 20-height):		
 		if gameStage != GameStages.PAUSE and not isOutsideOfField:	
-			if cursorSquare.visible == true:
-				var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
-				var y_pos = stepify(position.y+FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
-				var currentSquarePos = Vector2(x_pos, y_pos)
+			var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
+			var y_pos = stepify(position.y-FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
+			var currentSquarePos = Vector2(x_pos, y_pos)
 				
-				currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
-			else:
-				pass
+			currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
 	
 func start_dice_animation_orSmth():
 	if gameStage != GameStages.END:
@@ -248,7 +298,8 @@ func start_dice_animation_orSmth():
 		cursorSquare.hide()
 		
 		pass #animation things
-		
+		gameStage = GameStages.PLACING
+		print("GameStage = ", gameStage)
 		cursorSquare.show()
 	else:
 		beforeEndInit()
@@ -296,7 +347,7 @@ func place_squareToPlace():
 	var squareObj = squareObject.new(Vector2(pos_x,pos_y), Vector2(pos_x+width-1,pos_y+height-1),whoPlays)
 	squareObjectList.append(squareObj)
 	
-	get_node("PlayerSquares").remove_child(currentSquareToPlace)
+	get_node("CommonUI/PlayerSquares").remove_child(currentSquareToPlace)
 	get_PlayerSquares_node(whoPlays).add_child(currentSquareToPlace)
 	
 	change_team()
@@ -329,12 +380,14 @@ func rotate_square(square, angle):
 
 func change_team():
 	if whoPlays == 0:
-		cursorSquare.modulate = COLOR_TEAM_TWO
+		cursorSquare.modulate(COLOR_TEAM_TWO)
+		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_TWO
 		whoPlays = 1
 	elif whoPlays == 1:
-		cursorSquare.modulate = COLOR_TEAM_ONE
+		cursorSquare.modulate(COLOR_TEAM_ONE)
+		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_ONE
 		whoPlays = 0
-	print("Team changed. Now playing: Player "+(whoPlays+1)as String)
+	print("Team changed. Now playing: Player ", whoPlays + 1)
 
 func get_square(width, height):
 	var squareScene
@@ -384,9 +437,9 @@ func get_square(width, height):
 
 func get_PlayerSquares_node(team):
 	if team == 0:
-		return get_node("PlayerSquares").get_node("PlayerSquares1")
+		return $CommonUI/PlayerSquares/PlayerSquares1
 	elif team == 1:
-		return get_node("PlayerSquares").get_node("PlayerSquares2")
+		return $CommonUI/PlayerSquares/PlayerSquares2
 
 func get_players_color(team):
 	if team == 0:
@@ -405,13 +458,13 @@ func testingForEndInit(width, height):
 	if area1ChildCount == 0 or area2ChildCount == 0:
 		gameStage = GameStages.TESTED
 		print("GameStage = ", gameStage)
-		get_node("PlayerSquares").add_child(currentSquareToPlace)
+		$CommonUI/PlayerSquares.add_child(currentSquareToPlace)
 		currentSquareToPlace.rect_position = lastMousePosition
 		rotationFixVector = Vector2(0,0)
 		start_dice_animation_orSmth()
 	elif testingForEnd(width, height) == false:
 		gameStage = GameStages.TESTED
-		get_node("PlayerSquares").add_child(currentSquareToPlace)
+		$CommonUI/PlayerSquares.add_child(currentSquareToPlace)
 		currentSquareToPlace.rect_position = lastMousePosition
 		rotationFixVector = Vector2(0,0)
 		start_dice_animation_orSmth()
@@ -419,7 +472,7 @@ func testingForEndInit(width, height):
 		gameStage = GameStages.END
 		print("GameStage = ", gameStage)
 		
-		get_node("PlayerSquares").add_child(currentSquareToPlace)
+		$CommonUI/PlayerSquares.add_child(currentSquareToPlace)
 		currentSquareToPlace.rect_position = lastMousePosition
 		rotationFixVector = Vector2(0,0)
 				
@@ -605,7 +658,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 	var string = ""
 	for xy in range(20):
 		string += debuggingGrid[xy] as String + "\n"
-	$"debuggingThings/debuggingText".text = string
+	$CommonUI/debuggingThings/debuggingText.text = string
 	return false
 
 func _on_square_area_entered(another_area):
@@ -688,18 +741,18 @@ func _on_playerTwoStartPoints_area_exited(another_area):
 func _on_errorTimer_timeout():
 	currentSquareToPlace.modulate = COLOR_CLEAR
 	if whoPlays == 0:
-		cursorSquare.modulate = COLOR_TEAM_ONE
+		cursorSquare.modulate(COLOR_TEAM_ONE)
 	else:
-		cursorSquare.modulate = COLOR_TEAM_TWO
+		cursorSquare.modulate(COLOR_TEAM_TWO)
 
 func _on_beforeEndTimer_timeout():
 	if gameStage == GameStages.PAUSE:
-		$beforeEndTimer.start()
+		$CommonUI/beforeEndTimer.start()
 		pass
 	elif beforeEndSecondsSpent != BEFORE_END_SECONDS-1:
 		beforeEndSecondsSpent+=1
 		#$beforeEndLabel.text = (BEFORE_END_SECONDS - beforeEndSecondsSpent) as String
-		$beforeEndTimer.start()
+		$CommonUI/beforeEndTimer.start()
 	else:
 		#$beforeEndLabel.hide()
 		gameStage = GameStages.END_MENU
@@ -710,28 +763,95 @@ func _on_beforeEndTimer_timeout():
 
 func _on_pauseButton_button_up():
 	if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU:
-		if $pauseMenu.visible == false:
+		if $CommonUI/pauseMenu.visible == false:
 			pausePreviousGameStage = gameStage
 			gameStage = GameStages.PAUSE
 			print("GameStage = ", gameStage)
 			cursorSquare.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			$pauseMenu.visible = true
+			$CommonUI/pauseMenu.visible = true
 		else:
 			_on_pauseMenuContinue_button_up()
 
 func _on_pauseMenuContinue_button_up():
 	gameStage = pausePreviousGameStage
 	print("GameStage = ", gameStage)
-	$pauseMenu.hide()
+	$CommonUI/pauseMenu.hide()
 	cursorSquare.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass # Replace with function body.
 
 func _on_pauseMenuSurrender_button_up():
-	$pauseMenu.hide()
+	$CommonUI/pauseMenu.hide()
 	#$beforeEndLabel.hide()
 	gameStage = GameStages.END_MENU
 	print("GameStage = ", gameStage)
 	showEndMenu()
+	pass # Replace with function body.
+
+func mobile_move_cursor(joy_pos):
+	var pos_x = stepify(mobileCursorPosition.x-FIELD_START_POINT.x, 52)/52
+	var pos_y = stepify(mobileCursorPosition.y-FIELD_START_POINT.y, 52)/52
+		
+	print(pos_x, " ",pos_y) 	
+	
+	var square = currentSquareToPlace.get_node("Area2DSquare/square")
+	
+	var width = (square.rect_size.x - 4)/(56 - 4)
+	var height = (square.rect_size.y - 4)/(56 - 4)
+	
+	if currentSquareToPlace.rect_rotation as int == 90:
+		var temp = width
+		width = height
+		height = temp
+		pass
+	
+	if joy_pos.x>0.4 and pos_x < 20-width:
+		mobileCursorPosition.x += 52
+	if joy_pos.y>0.4 and pos_y < 20-height:
+		mobileCursorPosition.y += 52
+	if joy_pos.x<-0.4 and pos_x > 0:
+		mobileCursorPosition.x -= 52
+	if joy_pos.y<-0.4 and pos_y > 0:
+		mobileCursorPosition.y -= 52
+	
+	pos_x = stepify(mobileCursorPosition.x-FIELD_START_POINT.x, 52)/52
+	pos_y = stepify(mobileCursorPosition.y-FIELD_START_POINT.y, 52)/52
+	
+	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 20-height):		
+		if gameStage != GameStages.PAUSE:	
+			var x_pos = stepify(mobileCursorPosition.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
+			var y_pos = stepify(mobileCursorPosition.y-FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
+			var currentSquarePos = Vector2(x_pos, y_pos)				
+			currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
+	pass
+
+
+func _on_PlaceButton_button_up():
+	if not placingRules():
+		showErrorOnPlacing()
+		return
+	else:
+		place_squareToPlace()
+		
+		if whoPlays == 0:
+			mobileCursorPosition = FIELD_START_POINT
+		elif whoPlays == 1:
+			
+			var square = currentSquareToPlace.get_node("Area2DSquare/square")
+	
+			var width = (square.rect_size.x - 4)/(56 - 4)
+			var height = (square.rect_size.y - 4)/(56 - 4)
+			
+			var pos_x = (20-width)*52+FIELD_START_POINT.x
+			var pos_y = (20-height)*52+FIELD_START_POINT.y
+						
+			mobileCursorPosition = Vector2(pos_x, pos_y)
+			
+			mobile_move_cursor(Vector2(0,0))
+	pass # Replace with function body.
+
+
+func _on_RotateButton_button_up():
+	rotate_square(currentSquareToPlace,-90)
 	pass # Replace with function body.
