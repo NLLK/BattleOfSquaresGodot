@@ -253,6 +253,7 @@ func showErrorOnPlacing():
 	$CommonUI/errorTimer.start()
 	cursorSquare.modulate(COLOR_ERROR)
 	currentSquareToPlace.modulate = COLOR_ERROR
+	$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_ERROR
 
 func move_cursor(position):
 	position-=Vector2(52, 52)
@@ -382,10 +383,12 @@ func change_team():
 	if whoPlays == 0:
 		cursorSquare.modulate(COLOR_TEAM_TWO)
 		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_TWO
+		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_TWO
 		whoPlays = 1
 	elif whoPlays == 1:
 		cursorSquare.modulate(COLOR_TEAM_ONE)
 		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_ONE
+		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_ONE
 		whoPlays = 0
 	print("Team changed. Now playing: Player ", whoPlays + 1)
 
@@ -742,8 +745,10 @@ func _on_errorTimer_timeout():
 	currentSquareToPlace.modulate = COLOR_CLEAR
 	if whoPlays == 0:
 		cursorSquare.modulate(COLOR_TEAM_ONE)
+		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_ONE
 	else:
 		cursorSquare.modulate(COLOR_TEAM_TWO)
+		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_TWO
 
 func _on_beforeEndTimer_timeout():
 	if gameStage == GameStages.PAUSE:
@@ -836,6 +841,7 @@ func _on_PlaceButton_button_up():
 		
 		if whoPlays == 0:
 			mobileCursorPosition = FIELD_START_POINT
+			
 		elif whoPlays == 1:
 			
 			var square = currentSquareToPlace.get_node("Area2DSquare/square")
@@ -854,4 +860,9 @@ func _on_PlaceButton_button_up():
 
 func _on_RotateButton_button_up():
 	rotate_square(currentSquareToPlace,-90)
+	pass # Replace with function body.
+
+
+func _on_PlaceButton_button_down():
+	$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = Color("BEBEBE")
 	pass # Replace with function body.

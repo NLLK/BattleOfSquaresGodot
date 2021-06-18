@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/Styles/mainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Game/gameMain_script.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://src/Styles/buttonPressed.tres" type="StyleBox" id=6]
 [ext_resource path="res://src/Styles/buttonNormal.tres" type="StyleBox" id=7]
 [ext_resource path="res://Plugins/Joystick/Joystick.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/MobileUI/placeButton.png" type="Texture" id=9]
+[ext_resource path="res://src/MobileUI/rotationButtonPressed.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -25,6 +27,18 @@ extents = Vector2( 24, 24 )
 size = 80
 outline_size = 1
 font_data = ExtResource( 4 )
+
+[sub_resource type="InputEventKey" id=10]
+scancode = 16777221
+
+[sub_resource type="ShortCut" id=11]
+shortcut = SubResource( 10 )
+
+[sub_resource type="InputEventKey" id=12]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 17
@@ -44,12 +58,26 @@ use_filter = true
 extra_spacing_bottom = 6
 font_data = ExtResource( 4 )
 
+[sub_resource type="InputEventKey" id=8]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="StreamTexture" id=7]
+flags = 4
+load_path = "res://.import/rotateButton.png-99c7586b1c1aeba22a7f84f2cefc68f1.stex"
+
+[sub_resource type="StreamTexture" id=14]
+flags = 4
+load_path = "res://.import/placeButtonBackground.png-d66768ca48ee40f0287f9d2b8dd8e242.stex"
+
 [node name="Node2D" type="Node2D"]
 light_mask = 0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0, 1062.0, 1062.0, 592.0 ],
-"_edit_vertical_guides_": [ 320.0, 1364.0, 1364.0, 960.0 ]
+"_edit_horizontal_guides_": [ 18.0, 1062.0, 542.0, 1062.0, 1062.0, 1604.0, 592.0 ],
+"_edit_vertical_guides_": [ 320.0, 1364.0, 1364.0, 960.0, 3053.0, 1642.0 ]
 }
 isMobile = true
 showCursorAnyWay = true
@@ -5835,6 +5863,7 @@ rect_min_size = Vector2( 552, 100 )
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
+shortcut = SubResource( 11 )
 text = "Start game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -5848,6 +5877,7 @@ rect_min_size = Vector2( 552, 100 )
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
+shortcut = SubResource( 13 )
 text = "Back to main menu"
 script = ExtResource( 3 )
 __meta__ = {
@@ -6117,6 +6147,7 @@ custom_styles/pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = SubResource( 6 )
 enabled_focus_mode = 0
+shortcut = SubResource( 9 )
 text = "| |"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -6136,14 +6167,41 @@ __meta__ = {
 }
 
 [node name="Joystick" parent="MobileUI/Main" instance=ExtResource( 8 )]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 1549.0
-margin_top = 667.0
-margin_right = 1849.0
-margin_bottom = 967.0
+margin_left = 1492.0
+margin_top = 675.0
+margin_right = 1792.0
+margin_bottom = 975.0
 directions = 4
 
-[node name="PlaceButton" type="Button" parent="MobileUI/Main"]
+[node name="RotateButton" type="TextureButton" parent="MobileUI/Main"]
+margin_left = 1799.0
+margin_top = 594.0
+margin_right = 1899.0
+margin_bottom = 694.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+texture_normal = SubResource( 7 )
+texture_pressed = ExtResource( 10 )
+texture_hover = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceButtonBody" type="Control" parent="MobileUI/Main"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceButtonBackground" type="Sprite" parent="MobileUI/Main/PlaceButtonBody"]
+position = Vector2( 1397, 595 )
+texture = SubResource( 14 )
+centered = false
+
+[node name="PlaceButton" type="TextureButton" parent="MobileUI/Main/PlaceButtonBody"]
+modulate = Color( 0.4, 0.6, 1, 1 )
 margin_left = 1392.0
 margin_top = 592.0
 margin_right = 1492.0
@@ -6151,20 +6209,7 @@ margin_bottom = 692.0
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
-text = "P"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RotateButton" type="Button" parent="MobileUI/Main"]
-margin_left = 1807.0
-margin_top = 593.0
-margin_right = 1907.0
-margin_bottom = 693.0
-focus_mode = 0
-theme = ExtResource( 1 )
-enabled_focus_mode = 0
-text = "R"
+texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -6185,5 +6230,6 @@ __meta__ = {
 [connection signal="button_up" from="CommonUI/pauseMenu/endMenuButtons2/pauseMenuSurrender" to="." method="_on_pauseMenuSurrender_button_up"]
 [connection signal="button_up" from="CommonUI/pauseMenu/endMenuButtons2/BackToMenuButton" to="CommonUI/pauseMenu/endMenuButtons2/BackToMenuButton" method="_on_BackToMenuButton_button_up"]
 [connection signal="button_up" from="CommonUI/pauseButton" to="." method="_on_pauseButton_button_up"]
-[connection signal="button_up" from="MobileUI/Main/PlaceButton" to="." method="_on_PlaceButton_button_up"]
 [connection signal="button_up" from="MobileUI/Main/RotateButton" to="." method="_on_RotateButton_button_up"]
+[connection signal="button_down" from="MobileUI/Main/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_down"]
+[connection signal="button_up" from="MobileUI/Main/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_up"]

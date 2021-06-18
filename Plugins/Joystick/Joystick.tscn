@@ -1,8 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Plugins/Joystick/Joystick.gd" type="Script" id=1]
-[ext_resource path="res://Plugins/Joystick/joystick_background_cross.png" type="Texture" id=2]
-[ext_resource path="res://Plugins/Joystick/joystick_handle.png" type="Texture" id=3]
+[ext_resource path="res://src/Joystick/joystick_circle.png" type="Texture" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/joystick_background.png-305747c284df52e27bd43173a6cb05d3.stex"
 
 [node name="Joystick" type="Control"]
 anchor_top = 1.0
@@ -28,7 +31,7 @@ margin_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 128, 128 )
-texture = ExtResource( 2 )
+texture = SubResource( 1 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
@@ -42,7 +45,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 64, 64 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
