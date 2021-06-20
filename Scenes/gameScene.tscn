@@ -28,29 +28,29 @@ size = 80
 outline_size = 1
 font_data = ExtResource( 4 )
 
-[sub_resource type="InputEventKey" id=10]
+[sub_resource type="InputEventKey" id=4]
 scancode = 16777221
 
-[sub_resource type="ShortCut" id=11]
-shortcut = SubResource( 10 )
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
 
-[sub_resource type="InputEventKey" id=12]
+[sub_resource type="InputEventKey" id=6]
 scancode = 16777217
 
-[sub_resource type="ShortCut" id=13]
-shortcut = SubResource( 12 )
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=8]
 size = 17
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=9]
 size = 50
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=10]
 size = 49
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -58,13 +58,13 @@ use_filter = true
 extra_spacing_bottom = 6
 font_data = ExtResource( 4 )
 
-[sub_resource type="InputEventKey" id=8]
+[sub_resource type="InputEventKey" id=11]
 scancode = 16777217
 
-[sub_resource type="ShortCut" id=9]
-shortcut = SubResource( 8 )
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
 
-[sub_resource type="StreamTexture" id=7]
+[sub_resource type="StreamTexture" id=13]
 flags = 4
 load_path = "res://.import/rotateButton.png-99c7586b1c1aeba22a7f84f2cefc68f1.stex"
 
@@ -5863,7 +5863,7 @@ rect_min_size = Vector2( 552, 100 )
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
-shortcut = SubResource( 11 )
+shortcut = SubResource( 5 )
 text = "Start game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -5877,7 +5877,7 @@ rect_min_size = Vector2( 552, 100 )
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
-shortcut = SubResource( 13 )
+shortcut = SubResource( 7 )
 text = "Back to main menu"
 script = ExtResource( 3 )
 __meta__ = {
@@ -5897,7 +5897,7 @@ margin_left = 1365.0
 margin_top = 19.0
 margin_right = 1918.0
 margin_bottom = 535.0
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 8 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 0
 text = "ffff"
@@ -6130,7 +6130,7 @@ margin_top = 1017.0
 margin_right = 1920.0
 margin_bottom = 1075.0
 theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 align = 2
@@ -6145,9 +6145,9 @@ focus_mode = 0
 theme = ExtResource( 1 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/normal = ExtResource( 7 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 enabled_focus_mode = 0
-shortcut = SubResource( 9 )
+shortcut = SubResource( 12 )
 text = "| |"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -6174,6 +6174,7 @@ margin_bottom = 975.0
 directions = 4
 
 [node name="RotateButton" type="TextureButton" parent="MobileUI/Main"]
+modulate = Color( 0.4, 0.6, 1, 1 )
 margin_left = 1799.0
 margin_top = 594.0
 margin_right = 1899.0
@@ -6181,9 +6182,9 @@ margin_bottom = 694.0
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
-texture_normal = SubResource( 7 )
+texture_normal = SubResource( 13 )
 texture_pressed = ExtResource( 10 )
-texture_hover = SubResource( 7 )
+texture_hover = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -6230,6 +6231,7 @@ __meta__ = {
 [connection signal="button_up" from="CommonUI/pauseMenu/endMenuButtons2/pauseMenuSurrender" to="." method="_on_pauseMenuSurrender_button_up"]
 [connection signal="button_up" from="CommonUI/pauseMenu/endMenuButtons2/BackToMenuButton" to="CommonUI/pauseMenu/endMenuButtons2/BackToMenuButton" method="_on_BackToMenuButton_button_up"]
 [connection signal="button_up" from="CommonUI/pauseButton" to="." method="_on_pauseButton_button_up"]
+[connection signal="button_down" from="MobileUI/Main/RotateButton" to="." method="_on_RotateButton_button_down"]
 [connection signal="button_up" from="MobileUI/Main/RotateButton" to="." method="_on_RotateButton_button_up"]
 [connection signal="button_down" from="MobileUI/Main/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_down"]
 [connection signal="button_up" from="MobileUI/Main/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_up"]

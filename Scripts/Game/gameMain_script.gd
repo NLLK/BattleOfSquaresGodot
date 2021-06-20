@@ -349,6 +349,9 @@ func place_squareToPlace():
 	squareObjectList.append(squareObj)
 	
 	get_node("CommonUI/PlayerSquares").remove_child(currentSquareToPlace)
+	
+	currentSquareToPlace.get_node("shadowSquare").hide()
+	
 	get_PlayerSquares_node(whoPlays).add_child(currentSquareToPlace)
 	
 	change_team()
@@ -384,11 +387,13 @@ func change_team():
 		cursorSquare.modulate(COLOR_TEAM_TWO)
 		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_TWO
 		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_TWO
+		$MobileUI/Main/RotateButton.modulate = COLOR_TEAM_TWO
 		whoPlays = 1
 	elif whoPlays == 1:
 		cursorSquare.modulate(COLOR_TEAM_ONE)
 		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_ONE
 		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_ONE
+		$MobileUI/Main/RotateButton.modulate = COLOR_TEAM_ONE
 		whoPlays = 0
 	print("Team changed. Now playing: Player ", whoPlays + 1)
 
@@ -435,6 +440,12 @@ func get_square(width, height):
 	collisionForBorders.position = (sizeVector/2) 
 	squareScene.get_node("Area2DSquare").connect("area_exited", self, "_on_square_area_exited")
 	squareScene.get_node("Area2DSquare").connect("area_entered", self, "_on_square_area_entered")
+
+	var shadow = squareScene.get_node("shadowSquare")
+	
+	shadow.rect_position = Vector2(-5,-5)
+	shadow.rect_size = sizeVector + Vector2(10,10)
+
 
 	return squareScene
 
@@ -860,9 +871,14 @@ func _on_PlaceButton_button_up():
 
 func _on_RotateButton_button_up():
 	rotate_square(currentSquareToPlace,-90)
+	$MobileUI/Main/RotateButton.modulate = get_players_color(whoPlays)
 	pass # Replace with function body.
-
 
 func _on_PlaceButton_button_down():
 	$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = Color("BEBEBE")
+	pass # Replace with function body.
+
+
+func _on_RotateButton_button_down():
+	$MobileUI/Main/RotateButton.modulate = Color("BEBEBE")
 	pass # Replace with function body.
