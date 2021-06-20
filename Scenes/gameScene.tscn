@@ -6171,7 +6171,7 @@ margin_left = 1492.0
 margin_top = 675.0
 margin_right = 1792.0
 margin_bottom = 975.0
-directions = 4
+directions = 8
 
 [node name="RotateButton" type="TextureButton" parent="MobileUI/Main"]
 modulate = Color( 0.4, 0.6, 1, 1 )

@@ -284,6 +284,7 @@ func move_cursor(position):
 		cursorSquare.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
+	
 	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 20-height):		
 		if gameStage != GameStages.PAUSE and not isOutsideOfField:	
 			var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
@@ -364,23 +365,35 @@ func rotate_square(square, angle):
 	square.rect_position -= rotationFixVector
 	rotationFixVector = Vector2(0,0)
 	square.rect_rotation +=angle
-	if square.rect_rotation == 180:
+	if square.rect_rotation == 180 or square.rect_rotation == -180:
 		square.rect_rotation = 0
 	if square.rect_rotation == -90:
 		square.rect_rotation = 90 
 		
 	var size_y = square.get_node("Area2DSquare/square").rect_size.y
 	var height = (size_y - 4)/(56 - 4)
+	var size_x = square.get_node("Area2DSquare/square").rect_size.x
+	var width = (size_x - 4)/(56 - 4)
 	
 	var positionModification = Vector2(0,0)
-	var rotation: int 
-	rotation = square.rect_rotation
-	if rotation == 90:
+	var borderCollidingFix = Vector2(0,0)
+	
+	if square.rect_rotation as int == 90 or square.rect_rotation as int == -90:
 		rotationFixVector.x = 4
 		positionModification = Vector2(height, 0)
-			
+		
+	var pos_x = (square.rect_position.x-FIELD_START_POINT.x)/52
+	var pos_y = (square.rect_position.y-FIELD_START_POINT.y)/52
+	if pos_x+height>20:
+		borderCollidingFix.x = (20-pos_x-height)*52
+	elif pos_x+width>20:
+		borderCollidingFix.x = (20-pos_x-width)*52
+	if pos_y+height>20:
+		borderCollidingFix.y = (20-pos_y-height)*52
+	elif pos_y+width>20:
+		borderCollidingFix.y = (20-pos_y-width)*52
 	rotationFixVector += positionModification*52
-	square.rect_position += rotationFixVector
+	square.rect_position += rotationFixVector + borderCollidingFix
 
 func change_team():
 	if whoPlays == 0:
@@ -842,7 +855,6 @@ func mobile_move_cursor(joy_pos):
 			currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
 	pass
 
-
 func _on_PlaceButton_button_up():
 	if not placingRules():
 		showErrorOnPlacing()
@@ -867,7 +879,6 @@ func _on_PlaceButton_button_up():
 			
 			mobile_move_cursor(Vector2(0,0))
 	pass # Replace with function body.
-
 
 func _on_RotateButton_button_up():
 	rotate_square(currentSquareToPlace,-90)
