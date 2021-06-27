@@ -4,14 +4,14 @@ export(Color) var COLOR_TEAM_ONE = Color("6699ff")
 export(Color) var COLOR_TEAM_TWO = Color("ff3399")
 export(Color) var COLOR_ERROR = Color("ff0000")
 const COLOR_CLEAR = Color("ffffff")
-export(Vector2) var FIELD_BORDERS = Vector2(1360,1058)
-export(Vector2) var FIELD_START_POINT = Vector2(320,18)
+var FIELD_BORDERS = Vector2(1040,1040) # = Vector2(1360,1058)
+var FIELD_START_POINT = Vector2(0,0)# = Vector2(320,18)
+export(Vector2) var FIELD_POSITION = Vector2(320,18)
 
 export(int) var BEFORE_END_SECONDS = 3
 export(bool) var PRINT_COLLIDERS_INFO = false
 export(bool) var isMobile
 export(bool) var showCursorAnyWay
-
 
 enum GameStages {MENU, START, GENERATING, TESTING, TESTED, DICE_ANIMATION, PLACING, END, PAUSE, END_MENU}
 
@@ -39,22 +39,51 @@ var beforeEndSecondsSpent = 0
 var pausePreviousGameStage
 var gameTime=0
 
-var mobileCursorPosition = FIELD_START_POINT #mb create separate object for it
+var mobileCursorPosition#mb create separate object for it
+
+##### NODE_paths #####
+
+onready var NODE_SquareCursor = $CommonUI/SquareCursor
+onready var NODE_Menu_start = $CommonUI/Menus/startMenu
+onready var NODE_Menu_pause = $CommonUI/Menus/pauseMenu
+onready var NODE_Menu_end = $CommonUI/Menus/endMenu
+onready var NODE_Menu_end_whoWonLabel = NODE_Menu_end.get_node("whoWonLabel")
+onready var NODE_Menu_end_Tween = NODE_Menu_end.get_node("endMenuTween")
+onready var NODE_beforeEndTimer = $CommonUI/beforeEndTimer
+onready var NODE_errorTimer = $CommonUI/errorTimer
+onready var NODE_PlayerSquares = $CommonUI/backgroundMain/PlayerSquares
+onready var NODE_PlayerSquares_1 = NODE_PlayerSquares.get_node("PlayerSquares1")
+onready var NODE_PlayerSquares_2 = NODE_PlayerSquares.get_node("PlayerSquares2")
+onready var NODE_debuggingText = $CommonUI/debuggingThings/debuggingText
+
+onready var NODE_MobileMenu_Main = $MobileUI/Main
+onready var NODE_MobileMenu_Joystick = $MobileUI/Main/Joystick
+onready var NODE_MobileMenu_joystickDelayTimer = $MobileUI/joystickDelayTimer
+onready var NODE_MobileMenu_placeButton = $MobileUI/Main/PlaceButtonBody/PlaceButton
+onready var NODE_MobileMenu_rotateButton = $MobileUI/Main/RotateButton
+
+
+##### /NODE_paths #####
 
 func _ready():
+	
+	FIELD_BORDERS+=FIELD_POSITION
+	FIELD_START_POINT+=FIELD_POSITION
+	
+	mobileCursorPosition = FIELD_START_POINT
 	
 	if (OS.get_name() == "Android"):
 		isMobile = true
 		
 	if isMobile:
-		$CommonUI/SquareCursor.hide()
+		NODE_SquareCursor.hide()
 		print("Is mobiiiile is it now or never")
 
-	$MobileUI/Main.hide()
+	NODE_MobileMenu_Main.hide()
 	
 	print("GameStage = ", gameStage)
-	$MobileUI/Main/Joystick.modulate = COLOR_TEAM_ONE
-	$CommonUI/endMenu.modulate = Color("00ffffff")
+	NODE_MobileMenu_Joystick.modulate = COLOR_TEAM_ONE
+	NODE_Menu_end.modulate = Color("00ffffff")
 	gridSystem.grid = init_array(gridSystem.grid, 0)
 	init_array(debuggingGrid, 0)
 	randomize()
@@ -75,23 +104,23 @@ func _on_StartGameButton_button_up():
 	gameStage = GameStages.START
 	print("GameStage = ", gameStage)
 	
-	$CommonUI/startMenu.hide()
+	NODE_Menu_start.hide()
 	if isMobile:
-		$MobileUI/Main.show()
-		$MobileUI/Main/Joystick.show()
+		NODE_MobileMenu_Main.show()
+		NODE_MobileMenu_Joystick.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 	
 	if showCursorAnyWay:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	cursorSquare = cursorSquareObject.new($CommonUI/SquareCursor,isMobile)
+	cursorSquare = cursorSquareObject.new(NODE_SquareCursor,isMobile)
 	cursorSquare.modulate(get_players_color(whoPlays))
 	cursorSquare.hide()
 	#TODO: сделать это действие по анимации рандома
 	generate_new_square()
 
 func _on_endPlayAgain_button_up():
-	$CommonUI/endMenu.hide()
-	$CommonUI/endMenu.modulate = Color("00ffffff")
+	NODE_Menu_end.hide()
+	NODE_Menu_end.modulate = Color("00ffffff")
 	gameStage = GameStages.START
 	print("GameStage = ", gameStage)
 	
@@ -123,7 +152,7 @@ func _on_endPlayAgain_button_up():
 	generate_new_square()
 	
 	if isMobile:
-		$MobileUI/Main.show()
+		NODE_MobileMenu_Main.show()
 		if whoPlays == 0:
 			mobileCursorPosition = FIELD_START_POINT
 		elif whoPlays == 1:
@@ -133,8 +162,8 @@ func _on_endPlayAgain_button_up():
 			var width = (square.rect_size.x - 4)/(56 - 4)
 			var height = (square.rect_size.y - 4)/(56 - 4)
 			
-			var pos_x = (20-width)*52+FIELD_START_POINT.x
-			var pos_y = (20-height)*52+FIELD_START_POINT.y
+			var pos_x = (20-width)*52#+FIELD_START_POINT.x
+			var pos_y = (20-height)*52#+FIELD_START_POINT.y
 						
 			mobileCursorPosition = Vector2(pos_x, pos_y)
 			
@@ -171,10 +200,10 @@ func _input(event):
 func _physics_process(_delta):
 	if gameStage == GameStages.PLACING or gameStage == GameStages.END:
 		if isMobile:
-			var joystick = $MobileUI/Main/Joystick
+			var joystick = NODE_MobileMenu_Joystick
 			if joystick.output != Vector2(0,0):
-				if $MobileUI/joystickDelayTimer.is_stopped():
-					$MobileUI/joystickDelayTimer.start()
+				if NODE_MobileMenu_joystickDelayTimer.is_stopped():
+					NODE_MobileMenu_joystickDelayTimer.start()
 					mobile_move_cursor(joystick.output)
 				
 func debugfunc():
@@ -197,24 +226,24 @@ func _on_left_button_click():
 
 func beforeEndInit():
 
-	$CommonUI/beforeEndTimer.start()
+	NODE_beforeEndTimer.start()
 		
 func showEndMenu():
 
 	cursorSquare.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 	change_team()
-	$CommonUI/endMenu/whoWonLabel.set("custom_colors/font_color", get_players_color(whoPlays))
-	$CommonUI/endMenu/whoWonLabel.set("custom_colors/font_outline_modulate", get_players_color(whoPlays))
-	$CommonUI/endMenu/whoWonLabel.text = "Player " + (whoPlays+1)as String + " won!" 
+	NODE_Menu_end_whoWonLabel.set("custom_colors/font_color", get_players_color(whoPlays))
+	NODE_Menu_end_whoWonLabel.set("custom_colors/font_outline_modulate", get_players_color(whoPlays))
+	NODE_Menu_end_whoWonLabel.text = "Player " + (whoPlays+1)as String + " won!" 
 	change_team()
-	$CommonUI/endMenu/endMenuTween.interpolate_property($CommonUI/endMenu, "modulate", 
+	NODE_Menu_end_Tween.interpolate_property(NODE_Menu_end, "modulate", 
 	Color("00ffffff"), Color("ffffffff"), 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$CommonUI/endMenu/endMenuTween.start()
-	$CommonUI/endMenu.show()
+	NODE_Menu_end_Tween.start()
+	NODE_Menu_end.show()
 	
 	if isMobile:
-		$MobileUI/Main.hide()
+		NODE_MobileMenu_Main.hide()
 		pass
 	
 	pass
@@ -250,10 +279,10 @@ func placingRules():
 	return answer
 	
 func showErrorOnPlacing():
-	$CommonUI/errorTimer.start()
+	NODE_errorTimer.start()
 	cursorSquare.modulate(COLOR_ERROR)
 	currentSquareToPlace.modulate = COLOR_ERROR
-	$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_ERROR
+	NODE_MobileMenu_placeButton.modulate = COLOR_ERROR
 
 func move_cursor(position):
 	position-=Vector2(52, 52)
@@ -287,8 +316,8 @@ func move_cursor(position):
 	
 	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 20-height):		
 		if gameStage != GameStages.PAUSE and not isOutsideOfField:	
-			var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
-			var y_pos = stepify(position.y-FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
+			var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)#+FIELD_START_POINT.x
+			var y_pos = stepify(position.y-FIELD_START_POINT.y, 52)#+FIELD_START_POINT.y
 			var currentSquarePos = Vector2(x_pos, y_pos)
 				
 			currentSquareToPlace.rect_position = currentSquarePos + rotationFixVector
@@ -331,8 +360,8 @@ func place_squareToPlace():
 	var width = (square.rect_size.x - 4)/(56 - 4)
 	var height = (square.rect_size.y - 4)/(56 - 4)
 	
-	var pos_x = (currentSquareToPlace.rect_position.x-FIELD_START_POINT.x-rotationFixVector.x)/52
-	var pos_y = (currentSquareToPlace.rect_position.y-FIELD_START_POINT.y-rotationFixVector.y)/52
+	var pos_x = (currentSquareToPlace.rect_position.x-rotationFixVector.x)/52
+	var pos_y = (currentSquareToPlace.rect_position.y-rotationFixVector.y)/52
 	
 	if currentSquareToPlace.rect_rotation as int == 90:
 		var temp = width
@@ -349,7 +378,7 @@ func place_squareToPlace():
 	var squareObj = squareObject.new(Vector2(pos_x,pos_y), Vector2(pos_x+width-1,pos_y+height-1),whoPlays)
 	squareObjectList.append(squareObj)
 	
-	get_node("CommonUI/PlayerSquares").remove_child(currentSquareToPlace)
+	NODE_PlayerSquares.remove_child(currentSquareToPlace)
 	
 	currentSquareToPlace.get_node("shadowSquare").hide()
 	
@@ -382,8 +411,8 @@ func rotate_square(square, angle):
 		rotationFixVector.x = 4
 		positionModification = Vector2(height, 0)
 		
-	var pos_x = (square.rect_position.x-FIELD_START_POINT.x)/52
-	var pos_y = (square.rect_position.y-FIELD_START_POINT.y)/52
+	var pos_x = (square.rect_position.x)/52
+	var pos_y = (square.rect_position.y)/52
 	if pos_x+height>20:
 		borderCollidingFix.x = (20-pos_x-height)*52
 	elif pos_x+width>20:
@@ -398,15 +427,15 @@ func rotate_square(square, angle):
 func change_team():
 	if whoPlays == 0:
 		cursorSquare.modulate(COLOR_TEAM_TWO)
-		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_TWO
-		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_TWO
-		$MobileUI/Main/RotateButton.modulate = COLOR_TEAM_TWO
+		NODE_MobileMenu_Joystick.modulate = COLOR_TEAM_TWO
+		NODE_MobileMenu_placeButton.modulate = COLOR_TEAM_TWO
+		NODE_MobileMenu_rotateButton.modulate = COLOR_TEAM_TWO
 		whoPlays = 1
 	elif whoPlays == 1:
 		cursorSquare.modulate(COLOR_TEAM_ONE)
-		$MobileUI/Main/Joystick.modulate = COLOR_TEAM_ONE
-		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_ONE
-		$MobileUI/Main/RotateButton.modulate = COLOR_TEAM_ONE
+		NODE_MobileMenu_Joystick.modulate = COLOR_TEAM_ONE
+		NODE_MobileMenu_placeButton.modulate = COLOR_TEAM_ONE
+		NODE_MobileMenu_rotateButton.modulate = COLOR_TEAM_ONE
 		whoPlays = 0
 	print("Team changed. Now playing: Player ", whoPlays + 1)
 
@@ -464,9 +493,9 @@ func get_square(width, height):
 
 func get_PlayerSquares_node(team):
 	if team == 0:
-		return $CommonUI/PlayerSquares/PlayerSquares1
+		return NODE_PlayerSquares_1
 	elif team == 1:
-		return $CommonUI/PlayerSquares/PlayerSquares2
+		return NODE_PlayerSquares_2
 
 func get_players_color(team):
 	if team == 0:
@@ -485,21 +514,21 @@ func testingForEndInit(width, height):
 	if area1ChildCount == 0 or area2ChildCount == 0:
 		gameStage = GameStages.TESTED
 		print("GameStage = ", gameStage)
-		$CommonUI/PlayerSquares.add_child(currentSquareToPlace)
-		currentSquareToPlace.rect_position = lastMousePosition
+		NODE_PlayerSquares.add_child(currentSquareToPlace)
+		currentSquareToPlace.rect_position = lastMousePosition-FIELD_POSITION
 		rotationFixVector = Vector2(0,0)
 		start_dice_animation_orSmth()
 	elif testingForEnd(width, height) == false:
 		gameStage = GameStages.TESTED
-		$CommonUI/PlayerSquares.add_child(currentSquareToPlace)
-		currentSquareToPlace.rect_position = lastMousePosition
+		NODE_PlayerSquares.add_child(currentSquareToPlace)
+		currentSquareToPlace.rect_position = lastMousePosition-FIELD_POSITION
 		rotationFixVector = Vector2(0,0)
 		start_dice_animation_orSmth()
 	else:
 		gameStage = GameStages.END
 		print("GameStage = ", gameStage)
 		
-		$CommonUI/PlayerSquares.add_child(currentSquareToPlace)
+		NODE_PlayerSquares.add_child(currentSquareToPlace)
 		currentSquareToPlace.rect_position = lastMousePosition
 		rotationFixVector = Vector2(0,0)
 				
@@ -685,7 +714,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 	var string = ""
 	for xy in range(20):
 		string += debuggingGrid[xy] as String + "\n"
-	$CommonUI/debuggingThings/debuggingText.text = string
+		NODE_debuggingText.text = string
 	return false
 
 func _on_square_area_entered(another_area):
@@ -769,19 +798,19 @@ func _on_errorTimer_timeout():
 	currentSquareToPlace.modulate = COLOR_CLEAR
 	if whoPlays == 0:
 		cursorSquare.modulate(COLOR_TEAM_ONE)
-		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_ONE
+		NODE_MobileMenu_placeButton.modulate = COLOR_TEAM_ONE
 	else:
 		cursorSquare.modulate(COLOR_TEAM_TWO)
-		$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = COLOR_TEAM_TWO
+		NODE_MobileMenu_placeButton.modulate = COLOR_TEAM_TWO
 
 func _on_beforeEndTimer_timeout():
 	if gameStage == GameStages.PAUSE:
-		$CommonUI/beforeEndTimer.start()
+		NODE_beforeEndTimer.start()
 		pass
 	elif beforeEndSecondsSpent != BEFORE_END_SECONDS-1:
 		beforeEndSecondsSpent+=1
 		#$beforeEndLabel.text = (BEFORE_END_SECONDS - beforeEndSecondsSpent) as String
-		$CommonUI/beforeEndTimer.start()
+		NODE_beforeEndTimer.start()
 	else:
 		#$beforeEndLabel.hide()
 		gameStage = GameStages.END_MENU
@@ -792,26 +821,26 @@ func _on_beforeEndTimer_timeout():
 
 func _on_pauseButton_button_up():
 	if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU:
-		if $CommonUI/pauseMenu.visible == false:
+		if NODE_Menu_pause.visible == false:
 			pausePreviousGameStage = gameStage
 			gameStage = GameStages.PAUSE
 			print("GameStage = ", gameStage)
 			cursorSquare.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			$CommonUI/pauseMenu.visible = true
+			NODE_Menu_pause.visible = true
 		else:
 			_on_pauseMenuContinue_button_up()
 
 func _on_pauseMenuContinue_button_up():
 	gameStage = pausePreviousGameStage
 	print("GameStage = ", gameStage)
-	$CommonUI/pauseMenu.hide()
+	NODE_Menu_pause.hide()
 	cursorSquare.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass # Replace with function body.
 
 func _on_pauseMenuSurrender_button_up():
-	$CommonUI/pauseMenu.hide()
+	NODE_Menu_pause.hide()
 	#$beforeEndLabel.hide()
 	gameStage = GameStages.END_MENU
 	print("GameStage = ", gameStage)
@@ -882,14 +911,14 @@ func _on_PlaceButton_button_up():
 
 func _on_RotateButton_button_up():
 	rotate_square(currentSquareToPlace,-90)
-	$MobileUI/Main/RotateButton.modulate = get_players_color(whoPlays)
+	NODE_MobileMenu_rotateButton.modulate = get_players_color(whoPlays)
 	pass # Replace with function body.
 
 func _on_PlaceButton_button_down():
-	$MobileUI/Main/PlaceButtonBody/PlaceButton.modulate = Color("BEBEBE")
+	NODE_MobileMenu_placeButton.modulate = Color("BEBEBE")
 	pass # Replace with function body.
 
 
 func _on_RotateButton_button_down():
-	$MobileUI/Main/RotateButton.modulate = Color("BEBEBE")
+	NODE_MobileMenu_rotateButton.modulate = Color("BEBEBE")
 	pass # Replace with function body.

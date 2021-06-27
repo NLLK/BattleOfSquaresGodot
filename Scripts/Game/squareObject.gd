@@ -6,9 +6,9 @@ var p1: Vector2
 var p2: Vector2
 var player: int
 
-func _init(p1,p2,player):
+func _init(_p1,_p2,_player):
 	
-	self.p1 = p1
-	self.p2 = p2
-	self.player = player
+	self.p1 = _p1
+	self.p2 = _p2
+	self.player = _player
 	pass

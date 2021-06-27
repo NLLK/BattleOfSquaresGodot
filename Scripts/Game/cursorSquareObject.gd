@@ -3,9 +3,9 @@ extends Object
 class_name cursorSquareObject
 var cursorSquare
 var isMobile
-func _init(cursorSquare, isMobile):
-	self.cursorSquare = cursorSquare
-	self.isMobile = isMobile
+func _init(_cursorSquare, _isMobile):
+	self.cursorSquare = _cursorSquare
+	self.isMobile = _isMobile
 	pass
 
 func show():
