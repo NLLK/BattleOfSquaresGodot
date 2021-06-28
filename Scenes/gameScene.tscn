@@ -76,6 +76,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+FIELD_SIZE = Vector2( 19, 19 )
 
 [node name="backgroundRectRect" type="ColorRect" parent="."]
 anchor_right = 1.0

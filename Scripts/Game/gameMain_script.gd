@@ -43,7 +43,6 @@ var gameTime=0
 var mobileCursorPosition#mb create separate object for it
 
 ##### NODE_paths #####
-
 onready var NODE_SquareCursor = $CommonUI/SquareCursor
 onready var NODE_Menu_start = $CommonUI/Menus/startMenu
 onready var NODE_Menu_pause = $CommonUI/Menus/pauseMenu
@@ -62,8 +61,6 @@ onready var NODE_MobileMenu_Joystick = $MobileUI/Main/Joystick
 onready var NODE_MobileMenu_joystickDelayTimer = $MobileUI/joystickDelayTimer
 onready var NODE_MobileMenu_placeButton = $MobileUI/Main/PlaceButtonBody/PlaceButton
 onready var NODE_MobileMenu_rotateButton = $MobileUI/Main/RotateButton
-
-
 ##### /NODE_paths #####
 
 func _ready():
@@ -88,19 +85,19 @@ func _ready():
 	gridSystem.grid = init_array(gridSystem.grid, 0)
 	init_array(debuggingGrid, 0)
 	randomize()
-	
+
 func init_array(array, just_zero):
 	if (just_zero == 0):
-		for _x in range(20):
+		for _y in range(FIELD_SIZE.y):
 			var col = []
-			col.resize(20)
+			col.resize(FIELD_SIZE.x)
 			array.append(col)
 	
-	for x in range(20):
-		for y in range(20):
-			array[x][y] = 0
+	for y in range(FIELD_SIZE.y):
+		for x in range(FIELD_SIZE.x):
+			array[y][x] = 0
 	return array
-	
+
 func _on_StartGameButton_button_up():
 	gameStage = GameStages.START
 	print("GameStage = ", gameStage)
@@ -163,15 +160,15 @@ func _on_endPlayAgain_button_up():
 			var width = (square.rect_size.x - 4)/(56 - 4)
 			var height = (square.rect_size.y - 4)/(56 - 4)
 			
-			var pos_x = (20-width)*52#+FIELD_START_POINT.x
-			var pos_y = (20-height)*52#+FIELD_START_POINT.y
+			var pos_x = (FIELD_SIZE.x-width)*52#+FIELD_START_POINT.x
+			var pos_y = (FIELD_SIZE.y-height)*52#+FIELD_START_POINT.y
 						
 			mobileCursorPosition = Vector2(pos_x, pos_y)
 			
 			mobile_move_cursor(Vector2(0,0))
 	
 	pass
-	
+
 func _input(event):
 	if !isMobile:
 		if gameStage != GameStages.MENU and gameStage != GameStages.END_MENU and gameStage != GameStages.PAUSE:
@@ -197,7 +194,7 @@ func _input(event):
 				debugfunc()
 	else:
 		pass
-		
+
 func _physics_process(_delta):
 	if gameStage == GameStages.PLACING or gameStage == GameStages.END:
 		if isMobile:
@@ -206,7 +203,7 @@ func _physics_process(_delta):
 				if NODE_MobileMenu_joystickDelayTimer.is_stopped():
 					NODE_MobileMenu_joystickDelayTimer.start()
 					mobile_move_cursor(joystick.output)
-				
+
 func debugfunc():
 	
 	var square = currentSquareToPlace.get_node("Area2DSquare/square")
@@ -313,7 +310,7 @@ func move_cursor(position):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	
-	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 20-height):		
+	if not (pos_x < 0 or pos_y < 0 or pos_x > FIELD_SIZE.x-width or pos_y > FIELD_SIZE.y-height):		
 		if gameStage != GameStages.PAUSE and not isOutsideOfField:	
 			var x_pos = stepify(position.x-FIELD_START_POINT.x, 52)#+FIELD_START_POINT.x
 			var y_pos = stepify(position.y-FIELD_START_POINT.y, 52)#+FIELD_START_POINT.y
@@ -412,14 +409,14 @@ func rotate_square(square, angle):
 		
 	var pos_x = (square.rect_position.x)/52
 	var pos_y = (square.rect_position.y)/52
-	if pos_x+height>20:
-		borderCollidingFix.x = (20-pos_x-height)*52
-	elif pos_x+width>20:
-		borderCollidingFix.x = (20-pos_x-width)*52
-	if pos_y+height>20:
-		borderCollidingFix.y = (20-pos_y-height)*52
-	elif pos_y+width>20:
-		borderCollidingFix.y = (20-pos_y-width)*52
+	if pos_x+height>FIELD_SIZE.x:
+		borderCollidingFix.x = (FIELD_SIZE.x-pos_x-height)*52
+	elif pos_x+width>FIELD_SIZE.x:
+		borderCollidingFix.x = (FIELD_SIZE.x-pos_x-width)*52
+	if pos_y+height>FIELD_SIZE.y:
+		borderCollidingFix.y = (FIELD_SIZE.y-pos_y-height)*52
+	elif pos_y+width>FIELD_SIZE.y:
+		borderCollidingFix.y = (FIELD_SIZE.y-pos_y-width)*52
 	rotationFixVector += positionModification*52
 	square.rect_position += rotationFixVector + borderCollidingFix
 
@@ -531,10 +528,10 @@ func testingForEndPlacing(width, height):
 	var pos_y = stepify(lastMousePosition.y-FIELD_POSITION.y, 52)/52
 	var borderCollidingFix = Vector2(0,0)
 	
-	if pos_x+width>20:
-		borderCollidingFix.x = (20-pos_x-width)*52
-	if pos_y+height>20:
-		borderCollidingFix.y = (20-pos_y-height)*52
+	if pos_x+width>FIELD_SIZE.x:
+		borderCollidingFix.x = (FIELD_SIZE.x-pos_x-width)*52
+	if pos_y+height>FIELD_SIZE.y:
+		borderCollidingFix.y = (FIELD_SIZE.y-pos_y-height)*52
 	
 	NODE_PlayerSquares.add_child(currentSquareToPlace)
 	var x = stepify(lastMousePosition.x-FIELD_POSITION.x, 52)
@@ -651,7 +648,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 			temp_height = width
 		match side:
 			squareSides.UPPER:
-				if x+temp_width >20 or y-temp_height +1 <0:
+				if x+temp_width >FIELD_SIZE.x or y-temp_height +1 <0:
 					isBreak = true
 					continue
 				for j in range(y-temp_height+1, y+1):
@@ -666,7 +663,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 					pass
 				pass
 			squareSides.RIGHT:
-				if x+temp_width >20 or y+temp_height >20:
+				if x+temp_width >FIELD_SIZE.x or y+temp_height >FIELD_SIZE.y:
 					isBreak = true
 					continue
 				for j in range(y, y+temp_height):
@@ -681,7 +678,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 					pass
 				pass
 			squareSides.LOWER:
-				if x-temp_width +1 < 0 or y+temp_height >20:
+				if x-temp_width +1 < 0 or y+temp_height >FIELD_SIZE.y:
 					isBreak = true
 					continue
 				for j in range(y, y+temp_height):
@@ -720,7 +717,7 @@ func testingForEndCheckPlace(x,y,width,height,side):
 			return true
 		pass
 	var string = ""
-	for xy in range(20):
+	for xy in range(FIELD_SIZE.y):
 		string += debuggingGrid[xy] as String + "\n"
 		NODE_debuggingText.text = string
 	return false
@@ -860,9 +857,9 @@ func mobile_move_cursor(joy_pos):
 		height = temp
 		pass
 	
-	if joy_pos.x>0.4 and pos_x < 20-width:
+	if joy_pos.x>0.4 and pos_x < FIELD_SIZE.x-width:
 		mobileCursorPosition.x += 52
-	if joy_pos.y>0.4 and pos_y < 20-height:
+	if joy_pos.y>0.4 and pos_y < FIELD_SIZE.y-height:
 		mobileCursorPosition.y += 52
 	if joy_pos.x<-0.4 and pos_x > 0:
 		mobileCursorPosition.x -= 52
@@ -872,7 +869,7 @@ func mobile_move_cursor(joy_pos):
 	pos_x = stepify(mobileCursorPosition.x-FIELD_START_POINT.x, 52)/52
 	pos_y = stepify(mobileCursorPosition.y-FIELD_START_POINT.y, 52)/52
 	
-	if not (pos_x < 0 or pos_y < 0 or pos_x > 20-width or pos_y > 20-height):		
+	if not (pos_x < 0 or pos_y < 0 or pos_x > FIELD_SIZE.x-width or pos_y > FIELD_SIZE.y-height):		
 		if gameStage != GameStages.PAUSE:	
 			var x_pos = stepify(mobileCursorPosition.x-FIELD_START_POINT.x, 52)+FIELD_START_POINT.x
 			var y_pos = stepify(mobileCursorPosition.y-FIELD_START_POINT.y, 52)+FIELD_START_POINT.y
@@ -897,8 +894,8 @@ func _on_PlaceButton_button_up():
 			var width = (square.rect_size.x - 4)/(56 - 4)
 			var height = (square.rect_size.y - 4)/(56 - 4)
 			
-			var pos_x = (20-width)*52+FIELD_START_POINT.x
-			var pos_y = (20-height)*52+FIELD_START_POINT.y
+			var pos_x = (FIELD_SIZE.x-width)*52+FIELD_START_POINT.x
+			var pos_y = (FIELD_SIZE.y-height)*52+FIELD_START_POINT.y
 						
 			mobileCursorPosition = Vector2(pos_x, pos_y)
 			
