@@ -84,18 +84,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="background" type="Area2D" parent="."]
-visible = false
-position = Vector2( 319.692, 18 )
-collision_layer = 3
-collision_mask = 3
-
-[node name="backgroundCollisionPolygon" type="CollisionPolygon2D" parent="background"]
-visible = false
-position = Vector2( 0, 45 )
-scale = Vector2( 1, 52.2708 )
-polygon = PoolVector2Array( 1.00001, -0.921044, 320, -0.863651, 1920, -0.84452, 1920, -0.500159, 1922, 19.7788, 1381, 19.798, 317, 19.798, 316, 19.5493, 1373, 19.6258, 1376, -0.614946, 314, -0.653208, 313, 19.798, 1.00001, 19.7597 )
-
 [node name="CommonUI" type="CanvasLayer" parent="."]
 
 [node name="beforeEndTimer" type="Timer" parent="CommonUI"]
@@ -4767,10 +4755,9 @@ rect_min_size = Vector2( 1920, 1080 )
 
 [node name="grayBackroundRect" type="ColorRect" parent="CommonUI/Menus/startMenu"]
 modulate = Color( 0, 0, 0, 0.596078 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = -0.3
+anchor_right = 1.3
 rect_min_size = Vector2( 1920, 1080 )
-size_flags_horizontal = 2
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -4850,10 +4837,13 @@ __meta__ = {
 
 [node name="endMenuBackground" type="ColorRect" parent="CommonUI/Menus/endMenu"]
 modulate = Color( 0, 0, 0, 0.596078 )
+anchor_left = -0.3
+anchor_right = 0.3
 margin_right = 1920.0
 margin_bottom = 1080.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="endPanel" type="Panel" parent="CommonUI/Menus/endMenu"]
@@ -4918,18 +4908,19 @@ __meta__ = {
 
 [node name="endMenuTween" type="Tween" parent="CommonUI/Menus/endMenu"]
 
-[node name="pauseMenu" type="Control" parent="CommonUI/Menus"]
+[node name="pauseMenu" type="Container" parent="CommonUI/Menus"]
 visible = false
-margin_left = 960.0
-margin_top = 540.0
-margin_right = 960.0
-margin_bottom = 540.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 1920, 1080 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }
 
 [node name="pauseMenuBackground" type="ColorRect" parent="CommonUI/Menus/pauseMenu"]
 modulate = Color( 0, 0, 0, 0.596078 )
+anchor_left = -0.3
+anchor_right = 0.3
 margin_right = 1920.0
 margin_bottom = 1080.0
 __meta__ = {
@@ -4937,9 +4928,9 @@ __meta__ = {
 }
 
 [node name="pauseMenuPanel" type="Panel" parent="CommonUI/Menus/pauseMenu"]
-margin_left = 629.0
+margin_left = 616.0
 margin_top = 46.0
-margin_right = 1292.0
+margin_right = 1279.0
 margin_bottom = 1012.0
 theme = ExtResource( 1 )
 __meta__ = {
@@ -5084,9 +5075,10 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="pauseButton" type="Button" parent="CommonUI"]
-visible = false
-margin_right = 100.0
-margin_bottom = 100.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 105.0
+margin_bottom = 105.0
 focus_mode = 0
 theme = ExtResource( 1 )
 custom_styles/pressed = ExtResource( 6 )

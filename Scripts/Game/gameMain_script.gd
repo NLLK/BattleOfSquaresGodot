@@ -7,6 +7,7 @@ const COLOR_CLEAR = Color("ffffff")
 var FIELD_BORDERS = Vector2(1040,1040) # = Vector2(1360,1058)
 var FIELD_START_POINT = Vector2(0,0)# = Vector2(320,18)
 export(Vector2) var FIELD_POSITION = Vector2(320,18)
+export(Vector2) var FIELD_SIZE = Vector2(20,20)
 
 export(int) var BEFORE_END_SECONDS = 3
 export(bool) var PRINT_COLLIDERS_INFO = false
@@ -225,9 +226,7 @@ func _on_left_button_click():
 			 place_squareToPlace()
 
 func beforeEndInit():
-
 	NODE_beforeEndTimer.start()
-		
 func showEndMenu():
 
 	cursorSquare.hide()
@@ -247,7 +246,7 @@ func showEndMenu():
 		pass
 	
 	pass
-		
+
 func placingRules():
 	var answer: bool
 	answer = true
@@ -277,7 +276,7 @@ func placingRules():
 				answer = false
 	
 	return answer
-	
+
 func showErrorOnPlacing():
 	NODE_errorTimer.start()
 	cursorSquare.modulate(COLOR_ERROR)
@@ -336,7 +335,7 @@ func start_dice_animation_orSmth():
 		beforeEndInit()
 		pass #animation things
 		pass
-	
+
 func generate_new_square():
 	var w = randi()%6 + 1
 	var h = randi()%6 + 1
@@ -485,9 +484,10 @@ func get_square(width, height):
 
 	var shadow = squareScene.get_node("shadowSquare")
 	
-	shadow.rect_position = Vector2(-5,-5)
+	shadow.rect_position = Vector2(-2,-5)
 	shadow.rect_size = sizeVector + Vector2(10,10)
-
+	
+	squareScene.rect_position = lastMousePosition
 
 	return squareScene
 
@@ -514,26 +514,34 @@ func testingForEndInit(width, height):
 	if area1ChildCount == 0 or area2ChildCount == 0:
 		gameStage = GameStages.TESTED
 		print("GameStage = ", gameStage)
-		NODE_PlayerSquares.add_child(currentSquareToPlace)
-		currentSquareToPlace.rect_position = lastMousePosition-FIELD_POSITION
-		rotationFixVector = Vector2(0,0)
+		testingForEndPlacing(width, height)
 		start_dice_animation_orSmth()
 	elif testingForEnd(width, height) == false:
 		gameStage = GameStages.TESTED
-		NODE_PlayerSquares.add_child(currentSquareToPlace)
-		currentSquareToPlace.rect_position = lastMousePosition-FIELD_POSITION
-		rotationFixVector = Vector2(0,0)
+		testingForEndPlacing(width, height)
 		start_dice_animation_orSmth()
 	else:
 		gameStage = GameStages.END
 		print("GameStage = ", gameStage)
-		
-		NODE_PlayerSquares.add_child(currentSquareToPlace)
-		currentSquareToPlace.rect_position = lastMousePosition
-		rotationFixVector = Vector2(0,0)
-				
+		testingForEndPlacing(width, height)
 		start_dice_animation_orSmth()
 
+func testingForEndPlacing(width, height):
+	var pos_x = stepify(lastMousePosition.x-FIELD_POSITION.x, 52)/52
+	var pos_y = stepify(lastMousePosition.y-FIELD_POSITION.y, 52)/52
+	var borderCollidingFix = Vector2(0,0)
+	
+	if pos_x+width>20:
+		borderCollidingFix.x = (20-pos_x-width)*52
+	if pos_y+height>20:
+		borderCollidingFix.y = (20-pos_y-height)*52
+	
+	NODE_PlayerSquares.add_child(currentSquareToPlace)
+	var x = stepify(lastMousePosition.x-FIELD_POSITION.x, 52)
+	var y = stepify(lastMousePosition.y-FIELD_POSITION.y, 52)
+	currentSquareToPlace.rect_position = Vector2(x,y) + borderCollidingFix
+	rotationFixVector = Vector2(0,0)
+	
 func testingForEnd(width, height):
 	
 	init_array(debuggingGrid, 1)
@@ -734,18 +742,6 @@ func _on_square_area_exited(another_area):
 		if PRINT_COLLIDERS_INFO:
 			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " leaves square area")
 
-func _on_background_area_entered(another_area):
-	if another_area.get_name() == "Area2DSquare":
-		howManySquaresColliding+=1
-		if PRINT_COLLIDERS_INFO:
-			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " enters background")	
-	
-func _on_background_area_exited(another_area):
-	if another_area.get_name() == "Area2DSquare":
-		howManySquaresColliding-=1
-		if PRINT_COLLIDERS_INFO:
-			print(gameTime as String+" P", whoPlays+1, "; ", another_area.get_name()+ " leaves background")	
-	
 func _on_borderPlayer1_area_entered(another_area):
 	if another_area.get_name() == "Area2DforBordersPlayerOne":
 		bordersCollidingWithPlayer.player1 += 1
