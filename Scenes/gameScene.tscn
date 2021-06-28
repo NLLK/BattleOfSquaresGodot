@@ -60,23 +60,25 @@ scancode = 16777217
 [sub_resource type="ShortCut" id=11]
 shortcut = SubResource( 10 )
 
-[sub_resource type="StreamTexture" id=12]
-flags = 4
-load_path = "res://.import/rotateButton.png-99c7586b1c1aeba22a7f84f2cefc68f1.stex"
-
 [sub_resource type="StreamTexture" id=13]
 flags = 4
 load_path = "res://.import/placeButtonBackground.png-d66768ca48ee40f0287f9d2b8dd8e242.stex"
+
+[sub_resource type="StreamTexture" id=12]
+flags = 4
+load_path = "res://.import/rotateButton.png-99c7586b1c1aeba22a7f84f2cefc68f1.stex"
 
 [node name="Node2D" type="Control"]
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-FIELD_SIZE = Vector2( 19, 19 )
+isMobile = true
+showCursorAnyWay = true
 
 [node name="backgroundRectRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -5098,59 +5100,76 @@ __meta__ = {
 wait_time = 0.1
 one_shot = true
 
-[node name="Main" type="Control" parent="MobileUI"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Main" type="CenterContainer" parent="MobileUI"]
+anchor_left = 0.711
+anchor_top = 0.5
+anchor_right = 0.992
+anchor_bottom = 1.0
+margin_left = -0.119995
+margin_right = 0.359619
+grow_horizontal = 0
+rect_clip_content = true
+size_flags_horizontal = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Joystick" parent="MobileUI/Main" instance=ExtResource( 8 )]
-margin_left = 1492.0
-margin_top = 675.0
-margin_right = 1792.0
-margin_bottom = 975.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MobileUI/Main"]
+margin_left = 19.0
+margin_top = 120.0
+margin_right = 519.0
+margin_bottom = 420.0
+custom_constants/separation = 0
+alignment = 1
+
+[node name="PlaceButtonBody" type="Control" parent="MobileUI/Main/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 100, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceButtonBackground" type="Sprite" parent="MobileUI/Main/HBoxContainer/PlaceButtonBody"]
+texture = SubResource( 13 )
+centered = false
+
+[node name="PlaceButton" type="TextureButton" parent="MobileUI/Main/HBoxContainer/PlaceButtonBody"]
+modulate = Color( 0.4, 0.6, 1, 1 )
+margin_right = 100.0
+margin_bottom = 100.0
+focus_mode = 0
+theme = ExtResource( 1 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Joystick" parent="MobileUI/Main/HBoxContainer" instance=ExtResource( 8 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_top = 0.0
+margin_right = 400.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+rect_pivot_offset = Vector2( 0, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
 directions = 8
 
-[node name="RotateButton" type="TextureButton" parent="MobileUI/Main"]
+[node name="RotateButton" type="TextureButton" parent="MobileUI/Main/HBoxContainer"]
 modulate = Color( 0.4, 0.6, 1, 1 )
-margin_left = 1799.0
-margin_top = 594.0
-margin_right = 1899.0
-margin_bottom = 694.0
+margin_left = 400.0
+margin_right = 500.0
+margin_bottom = 300.0
 focus_mode = 0
 theme = ExtResource( 1 )
 enabled_focus_mode = 0
 texture_normal = SubResource( 12 )
 texture_pressed = ExtResource( 10 )
 texture_hover = SubResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlaceButtonBody" type="Control" parent="MobileUI/Main"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlaceButtonBackground" type="Sprite" parent="MobileUI/Main/PlaceButtonBody"]
-position = Vector2( 1397, 595 )
-texture = SubResource( 13 )
-centered = false
-
-[node name="PlaceButton" type="TextureButton" parent="MobileUI/Main/PlaceButtonBody"]
-modulate = Color( 0.4, 0.6, 1, 1 )
-margin_left = 1392.0
-margin_top = 592.0
-margin_right = 1492.0
-margin_bottom = 692.0
-focus_mode = 0
-theme = ExtResource( 1 )
-enabled_focus_mode = 0
-texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -5169,7 +5188,7 @@ __meta__ = {
 [connection signal="button_up" from="CommonUI/Menus/pauseMenu/endMenuButtons2/pauseMenuSurrender" to="." method="_on_pauseMenuSurrender_button_up"]
 [connection signal="button_up" from="CommonUI/Menus/pauseMenu/endMenuButtons2/BackToMenuButton" to="CommonUI/Menus/pauseMenu/endMenuButtons2/BackToMenuButton" method="_on_BackToMenuButton_button_up"]
 [connection signal="button_up" from="CommonUI/pauseButton" to="." method="_on_pauseButton_button_up"]
-[connection signal="button_down" from="MobileUI/Main/RotateButton" to="." method="_on_RotateButton_button_down"]
-[connection signal="button_up" from="MobileUI/Main/RotateButton" to="." method="_on_RotateButton_button_up"]
-[connection signal="button_down" from="MobileUI/Main/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_down"]
-[connection signal="button_up" from="MobileUI/Main/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_up"]
+[connection signal="button_down" from="MobileUI/Main/HBoxContainer/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_down"]
+[connection signal="button_up" from="MobileUI/Main/HBoxContainer/PlaceButtonBody/PlaceButton" to="." method="_on_PlaceButton_button_up"]
+[connection signal="button_down" from="MobileUI/Main/HBoxContainer/RotateButton" to="." method="_on_RotateButton_button_down"]
+[connection signal="button_up" from="MobileUI/Main/HBoxContainer/RotateButton" to="." method="_on_RotateButton_button_up"]
